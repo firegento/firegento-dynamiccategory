@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>FireGento_DynamicCategory</name>
+ <channel>connect.magentocommerce.com/community</channel>
+ <summary>FireGento_DynamicCategory</summary>
+ <description>FireGento_DynamicCategory</description>
+ <lead>
+  <name>Firegento Team</name>
+  <user>firegento</user>
+  <email>team@firegento.de</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-03-09</date>
+ <time>16:12:14</time>
+ <version>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license>todo</license>
+ <notes>
+first Release
+ </notes>
+ <contents>
+  <dir name="/">
+   <dir name="frontend">
+    <dir name="competec">
+     <dir name="default">
+      <dir name="css">
+       <file md5sum="8fb2acea15ecc5730319fc4b9f45336b" name="print.css" role="mageskin" />
+       <file md5sum="8a5f913a23854c1d5bb9c4b2c7b9aef9" name="styles-ie.css" role="mageskin" />
+       <file md5sum="3efc095be7edcb41a367eb5186064aaa" name="styles.css" role="mageskin" />
+      </dir> <!-- //frontend/competec/default/css -->
+      <dir name="images">
+       <dir name="catalog">
+        <dir name="product">
+         <dir name="placeholder">
+          <file md5sum="097ab8a3051bc037ea3de0e17f440540" name="image.jpg" role="mageskin" />
+          <file md5sum="f825d16f97a640453553c79c48ebaa73" name="small_image.jpg" role="mageskin" />
+          <file md5sum="b2b682d28a08a748a73d2cda70ab5a57" name="thumbnail.jpg" role="mageskin" />
+         </dir> <!-- //frontend/competec/default/images/catalog/product/placeholder -->
+        </dir> <!-- //frontend/competec/default/images/catalog/product -->
+       </dir> <!-- //frontend/competec/default/images/catalog -->
+       <file md5sum="5022d648379090e306f00cd64738b146" name="best_selling_tr_even_bg.gif" role="mageskin" />
+       <file md5sum="926622704f53796801bb5d097e116c8e" name="best_selling_tr_odd_bg.gif" role="mageskin" />
+       <file md5sum="dd98174b6e3e5605a3f9551a59c66841" name="bkg_account_box.gif" role="mageskin" />
+       <file md5sum="da2970eac0a22c850b19ee3680475d51" name="bkg_block-actions.gif" role="mageskin" />
+       <file md5sum="bfaad1b64557c05ad6f4b124ad3d3532" name="bkg_block-currency.gif" role="mageskin" />
+       <file md5sum="6ae6f8184e87de496fb74eeec65737c9" name="bkg_block-layered-dd.gif" role="mageskin" />
+       <file md5sum="ba8229068657b80f2c42111c5a1a307e" name="bkg_block-layered-dt.gif" role="mageskin" />
+       <file md5sum="14687dfa3921cfd12d2149c1497d9765" name="bkg_block-layered-label.gif" role="mageskin" />
+       <file md5sum="753ebb76a4fc2b5b6915c536fcf4d487" name="bkg_block-layered-li.gif" role="mageskin" />
+       <file md5sum="c92e29b30af7abf4e0bc3f714a246f55" name="bkg_block-layered-title.gif" role="mageskin" />
+       <file md5sum="607167f198572e83a0e728b6b9383a70" name="bkg_block-layered1.gif" role="mageskin" />
+       <file md5sum="a64f1df5a7e3d0f6a58b017f74311cb1" name="bkg_block-title-account.gif" role="mageskin" />
+       <file md5sum="f8c1f130ad69464fe7aff2f589b2ec75" name="bkg_block-title.gif" role="mageskin" />
+       <file md5sum="82bfc5bfe346c8e974cd33b1314b0acf" name="bkg_body.gif" role="mageskin" />
+       <file md5sum="2c641e927bc83156b7004ea37920513c" name="bkg_buttons-set1.gif" role="mageskin" />
+       <file md5sum="11258fe49feff5513c9608f2ea486776" name="bkg_checkout.gif" role="mageskin" />
+       <file md5sum="37418f23e65006dcfde07ce9b249e057" name="bkg_collapse-gm.gif" role="mageskin" />
+       <file md5sum="2333c68e38163ed4656da82b9bcf362b" name="bkg_collapse.gif" role="mageskin" />
+       <file md5sum="260ebae91ffb1b7c663906b29a069925" name="bkg_divider1.gif" role="mageskin" />
+       <file md5sum="2ca36eb80ea705e063409153f3821f78" name="bkg_form-search.gif" role="mageskin" />
+       <file md5sum="10f1c3d82d78170706fa3e9c4baa7e04" name="bkg_grand-total.gif" role="mageskin" />
+       <file md5sum="a6f64fedbac51fb1b86184cd488cc4e6" name="bkg_grid.gif" role="mageskin" />
+       <file md5sum="0211c47be1493bd0ec72949c47932b81" name="bkg_header.jpg" role="mageskin" />
+       <file md5sum="5538675d7f1c35d96a2b8013948f42a6" name="bkg_login-box.gif" role="mageskin" />
+       <file md5sum="a8f5717873dc6cf8f6bd22924b5838fe" name="bkg_main1.gif" role="mageskin" />
+       <file md5sum="cf18ba9f7c7e6b058b439cde1a897e9c" name="bkg_main2.gif" role="mageskin" />
+       <file md5sum="f9ac3f31e293cf075471d2d3fe07353a" name="bkg_nav0.jpg" role="mageskin" />
+       <file md5sum="f4e26840c8cca0e74aba5b810341c5c0" name="bkg_nav1.gif" role="mageskin" />
+       <file md5sum="a64c8f5165b239e432d26a62ae5f79b6" name="bkg_nav2.gif" role="mageskin" />
+       <file md5sum="f69b40b5331ab3760f54d038daf287eb" name="bkg_opc-title-off.gif" role="mageskin" />
+       <file md5sum="7852290f6a443000ead96b8cec5cd7c7" name="bkg_pipe1.gif" role="mageskin" />
+       <file md5sum="7da64eefaf4da3855ab6ee76dbced0c2" name="bkg_pipe2.gif" role="mageskin" />
+       <file md5sum="11bfac1e590f0c77fb12f37d7f05cd3c" name="bkg_pipe3.gif" role="mageskin" />
+       <file md5sum="7078a7f2827156d5ae0a1cb59da3c418" name="bkg_product-view.gif" role="mageskin" />
+       <file md5sum="1d4d6b22e5108aefae52709d3934f397" name="bkg_product_collateral.gif" role="mageskin" />
+       <file md5sum="0a8777c815350ddf1e316a537ad0c335" name="bkg_rating.gif" role="mageskin" />
+       <file md5sum="17d68b5449adaa87dafc62ae0afa1b9a" name="bkg_sp-methods.gif" role="mageskin" />
+       <file md5sum="b0d17555dfc6060941e0c067718189df" name="bkg_th-v.gif" role="mageskin" />
+       <file md5sum="f249911b08f2822fc0b561b7f98575d2" name="bkg_th.gif" role="mageskin" />
+       <file md5sum="fb7ed019476eaa1643af922b59ede4fb" name="bkg_toolbar.gif" role="mageskin" />
+       <file md5sum="d2060501e14e86c29e28137130e5726e" name="btn_checkout.gif" role="mageskin" />
+       <file md5sum="346e26eece27449a2f224aef76ae372e" name="btn_gm-close.gif" role="mageskin" />
+       <file md5sum="843d75249ce05b5d87ca5419f37b1c3b" name="btn_google_checkout.gif" role="mageskin" />
+       <file md5sum="6edd61270b7b5632eafad10557129114" name="btn_paypal_checkout.gif" role="mageskin" />
+       <file md5sum="d35219f86ae2c983ee1a31557e37b612" name="btn_place_order.gif" role="mageskin" />
+       <file md5sum="4daac687b514fecfd1068539500ac3d7" name="btn_proceed_to_checkout.gif" role="mageskin" />
+       <file md5sum="9e152c01d5d88f690dc52cb62428f3b6" name="btn_proceed_to_checkout_dis.gif" role="mageskin" />
+       <file md5sum="6182e723aa2a253dc6cf334a3dfaaa84" name="btn_remove.gif" role="mageskin" />
+       <file md5sum="234bddc4c5878c5ef16407a944824236" name="btn_remove2.gif" role="mageskin" />
+       <file md5sum="2d93b43c0a1c1182358677661e26a978" name="btn_search.gif" role="mageskin" />
+       <file md5sum="bcb22f558a0eb32243a2a36645189e9f" name="btn_trash.gif" role="mageskin" />
+       <file md5sum="c83f3cbbb2aedfc580dff78d5cfb63ed" name="btn_window_close.gif" role="mageskin" />
+       <file md5sum="b1468e5239504974c689eea5d93f86d4" name="calendar.gif" role="mageskin" />
+       <file md5sum="ed0f392004a405466291071a760b285d" name="cvv.gif" role="mageskin" />
+       <file md5sum="e27210d810bbab732935d9410936ef87" name="cvv.jpg" role="mageskin" />
+       <file md5sum="0ba89b9fbe7e88d4c6896ed0a1f495aa" name="fam_book_open.png" role="mageskin" />
+       <file md5sum="cbf2e494ef7ca50acf8826321d739559" name="free_shipping_callout.jpg" role="mageskin" />
+       <file md5sum="ee99a5586cf52e85c986d1275958a7da" name="home_left_callout.jpg" role="mageskin" />
+       <file md5sum="e6d1c119d5b24a5916fe394cb4b5cdc3" name="home_main_callout.jpg" role="mageskin" />
+       <file md5sum="3dbb0584e8eb1d96cc3d3c40c17d7aaf" name="i_arrow-top.gif" role="mageskin" />
+       <file md5sum="40aa554212d6a1f60593c27d78d85fa3" name="i_asc_arrow.gif" role="mageskin" />
+       <file md5sum="bca1f00a50864171ad98317b778e869c" name="i_availability_only.gif" role="mageskin" />
+       <file md5sum="0cf32b72fefc94b89b74e4f3f02c2e93" name="i_availability_only_arrow.gif" role="mageskin" />
+       <file md5sum="cc19e21f9c89b70cc10354ff588ca8ab" name="i_block-cart.gif" role="mageskin" />
+       <file md5sum="643024bcae5ece554fdbbc041aeb297c" name="i_block-currency.gif" role="mageskin" />
+       <file md5sum="fe8424127ecbe4b0d893bcf6f253dc1a" name="i_block-list.gif" role="mageskin" />
+       <file md5sum="52d778dddbf48b8d04226bee9370a7ef" name="i_block-poll.gif" role="mageskin" />
+       <file md5sum="4e277173b6372b1a90b0f19e0388ad54" name="i_block-related.gif" role="mageskin" />
+       <file md5sum="9e5fee06a543742045118a95f2debcb8" name="i_block-subscribe.gif" role="mageskin" />
+       <file md5sum="67d1255c2c3e9ed1a5c845f8d4e4a3ba" name="i_block-tags.gif" role="mageskin" />
+       <file md5sum="8f8cda89ca20ba4a9b2f8c91f73fdff9" name="i_block-wishlist.gif" role="mageskin" />
+       <file md5sum="92fd194bfae4ce5ae3354e1e47d7ac7d" name="i_desc_arrow.gif" role="mageskin" />
+       <file md5sum="908d44da90de5e54185764d093bbdb77" name="i_discount.gif" role="mageskin" />
+       <file md5sum="bf006ddb591d8ac95d2e895bf2fdbc8d" name="i_folder-table.gif" role="mageskin" />
+       <file md5sum="91259557447ee80eb1110fe0c85cb3b5" name="i_ma-info.gif" role="mageskin" />
+       <file md5sum="859c97695ec396c0b284a0c3c7c416ad" name="i_ma-reviews.gif" role="mageskin" />
+       <file md5sum="1e83e3b0b677c92b3aa8a252268f7b86" name="i_ma-tags.gif" role="mageskin" />
+       <file md5sum="e4f28607f075a105e53fa3113d84bd26" name="i_msg-error.gif" role="mageskin" />
+       <file md5sum="e774ee481a2820789c1a77112377c4e0" name="i_msg-note.gif" role="mageskin" />
+       <file md5sum="834dfafd5f8b44c4b24a4c00add56fcf" name="i_msg-success.gif" role="mageskin" />
+       <file md5sum="ebd56dc80b8346e10e93628bc0e6c372" name="i_notice.gif" role="mageskin" />
+       <file md5sum="704f7d4eccbdf9cabbad7770f18856ff" name="i_page1.gif" role="mageskin" />
+       <file md5sum="57a04ca584e05e28dc94c7e68f0af62e" name="i_page2.gif" role="mageskin" />
+       <file md5sum="ed4d6640624c2b6edeab4c212314bd6d" name="i_pager-next.gif" role="mageskin" />
+       <file md5sum="75973b020105dccbaf34e49d7852552d" name="i_pager-prev.gif" role="mageskin" />
+       <file md5sum="0aed138181495642e9ab29e55d194d40" name="i_print.gif" role="mageskin" />
+       <file md5sum="6cf70e7c52a3f3d7b833ccadb041a555" name="i_rss-big.png" role="mageskin" />
+       <file md5sum="e5bbc388d818c142868b4a1df0b48793" name="i_rss.gif" role="mageskin" />
+       <file md5sum="cf67b9cc5c311ae3f99e68cd29ae17be" name="i_search_criteria.gif" role="mageskin" />
+       <file md5sum="91a0d2cc2eb2391f90ec8a75c04b3183" name="i_shipping.gif" role="mageskin" />
+       <file md5sum="a736baa992aa55b6fb71e8742a04dc82" name="i_tag_add.gif" role="mageskin" />
+       <file md5sum="c5189e25afeb7c1a8c4902a42832593e" name="i_tier.gif" role="mageskin" />
+       <file md5sum="a1e5d8ac36fb2891ea16e729b95c552c" name="i_type_grid.gif" role="mageskin" />
+       <file md5sum="61333d383ec142b8d270abe77324aa5d" name="i_type_list.gif" role="mageskin" />
+       <file md5sum="48b7eb03807fdf80bdfb19b872cf84b8" name="logo.gif" role="mageskin" />
+       <file md5sum="e09d29db7e513d07ab552a2ce60c1f06" name="logo_email.gif" role="mageskin" />
+       <file md5sum="8de347192e0524cff7a69e4020182dbd" name="logo_print.gif" role="mageskin" />
+       <file md5sum="238fbdd7959f517db11c6f57ee4daaf4" name="magnifier_handle.gif" role="mageskin" />
+       <file md5sum="e9fdd943e0947e15f0638506f477e358" name="np_cart_thumb.gif" role="mageskin" />
+       <file md5sum="ace357bfe3e81ffb62137cd5b25ae5e1" name="np_more_img.gif" role="mageskin" />
+       <file md5sum="d0cccda76de50efa025215ce85dacb1c" name="np_product_main.gif" role="mageskin" />
+       <file md5sum="e46270c89358ecc8341d1565c14644b8" name="np_thumb.gif" role="mageskin" />
+       <file md5sum="8502866cdabc5c74aca7d7bd32a06a03" name="np_thumb2.gif" role="mageskin" />
+       <file md5sum="e805ea7eca1f34c75ba0f93780d32d38" name="opc-ajax-loader.gif" role="mageskin" />
+       <file md5sum="0ce8ad0026d8b8a83ed7acdf6209129b" name="ph_callout_left_rebel.jpg" role="mageskin" />
+       <file md5sum="f17a036d75e5065eb76bafbb2c8ad7ff" name="ph_callout_left_top.gif" role="mageskin" />
+       <file md5sum="83834893e162221d6d9257fe67847370" name="product_zoom_overlay_magnif.gif" role="mageskin" />
+       <file md5sum="87bc1b46d87de4f6252c7216216627c3" name="slider_bg.gif" role="mageskin" />
+       <file md5sum="ef0fc67f77f30827ee67f4e744b60781" name="slider_btn_zoom_in.gif" role="mageskin" />
+       <file md5sum="68b3d1c28dc5aec4f6b64d70a6996b6f" name="slider_btn_zoom_out.gif" role="mageskin" />
+       <file md5sum="df3e567d6f16d040326c7a0ea29a4f41" name="spacer.gif" role="mageskin" />
+       <file md5sum="b85432906de8985a8b14eeb2dc652d3c" name="validation_advice_bg.gif" role="mageskin" />
+      </dir> <!-- //frontend/competec/default/images -->
+      <dir name="layout">
+       <file md5sum="8989a390b8021c4dea5913a8a97e4c19" name="sales.xml" role="magedesign" />
+      </dir> <!-- //frontend/competec/default/layout -->
+      <dir name="locale">
+       <dir name="de_DE">
+        <file md5sum="ee2f42bdd8ceaaf06c52909219303ada" name="translate.csv" role="magedesign" />
+       </dir> <!-- //frontend/competec/default/locale/de_DE -->
+      </dir> <!-- //frontend/competec/default/locale -->
+      <dir name="template">
+       <dir name="bankpayment">
+        <file md5sum="9c8395be95224ed9b4877642fc32754b" name="form.phtml" role="magedesign" />
+        <file md5sum="a7ee46f4ff40fd7a9bb9dc8785977b6c" name="info.phtml" role="magedesign" />
+       </dir> <!-- //frontend/competec/default/template/bankpayment -->
+       <dir name="cashondelivery">
+        <file md5sum="954d299e370ebff22d49d71c07f30d13" name="info.phtml" role="magedesign" />
+       </dir> <!-- //frontend/competec/default/template/cashondelivery -->
+       <dir name="email">
+        <dir name="order">
+         <dir name="items">
+          <dir name="order">
+           <file md5sum="3c83bd189ed1399019b5903726d3f546" name="default.phtml" role="magedesign" />
+          </dir> <!-- //frontend/competec/default/template/email/order/items/order -->
+         </dir> <!-- //frontend/competec/default/template/email/order/items -->
+         <file md5sum="b023b2dedfe898bede61e98f4a379c72" name="items.phtml" role="magedesign" />
+        </dir> <!-- //frontend/competec/default/template/email/order -->
+       </dir> <!-- //frontend/competec/default/template/email -->
+       <dir name="payment">
+        <dir name="info">
+         <file md5sum="76f38af07c70f020962a15ca69cb8b48" name="purchaseorder.phtml" role="magedesign" />
+        </dir> <!-- //frontend/competec/default/template/payment/info -->
+       </dir> <!-- //frontend/competec/default/template/payment -->
+      </dir> <!-- //frontend/competec/default/template -->
+     </dir> <!-- //frontend/competec/default -->
+    </dir> <!-- //frontend/competec -->
+   </dir> <!-- //frontend -->
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+    <max>6.0.0</max>
+   </php>
+   <pearinstaller>
+    <min>1.6.2</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-03-09</date>
+   <license>todo</license>
+   <notes>
+first Release
+   </notes>
+  </release>
+ </changelog>
+</package>

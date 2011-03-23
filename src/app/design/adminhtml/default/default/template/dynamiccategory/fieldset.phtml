@@ -1,0 +1,37 @@
+<?php
+/**                                                                       
+ * This file is part of the FIREGENTO project.
+ * 
+ * FireGento_DynamicCategory is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU General Public License version 3 as 
+ * published by the Free Software Foundation.
+ * 
+ * This script is distributed in the hope that it will be useful, but WITHOUT 
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * 
+ *
+ * @category  FireGento
+ * @package   FireGento_DynamicCategory
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ * @version   $Id:$
+ * @since     0.1.0
+ */
+?>
+<?php $_element = $this->getElement() ?>
+<div class="rule-tree">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $_element->getLegend() ?></h4>
+    </div>
+    <fieldset id="<?php echo $_element->getHtmlId() ?>" <?php echo $_element->serialize(array('class')) ?>>
+    <?php if ($_element->getComment()): ?>
+        <p class="comment"><?php echo $this->escapeHtml($_element->getComment()) ?></p>
+    <?php endif; ?>
+    <?php echo $_element->getChildrenHtml() ?>
+    </fieldset>
+</div>
+<script type="text/javascript">
+var <?php echo $_element->getHtmlId() ?> = new VarienRulesForm('<?php echo $_element->getHtmlId() ?>', '<?php echo $this->getNewChildUrl() ?>');
+</script>
