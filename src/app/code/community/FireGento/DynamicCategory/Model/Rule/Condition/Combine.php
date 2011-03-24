@@ -40,7 +40,42 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
     public function __construct()
     {
         parent::__construct();
-        $this->setType('dynamiccategory/rule_condition_combine');
+    }
+
+    /**
+     * Returns the aggregator options
+     * 
+     * @see Mage_Rule_Model_Condition_Combine::loadAggregatorOptions()
+     * 
+     * @return FireGento_DynamicCategory_Model_Rule_Condition_Combine Self.
+     */
+    public function loadAggregatorOptions()
+    {
+        $this->setAggregatorOption(
+            array(
+                'all' => Mage::helper('rule')->__('ALL'),
+                //'any' => Mage::helper('rule')->__('ANY'),
+            )
+        );
+        return $this;
+    }
+
+    /**
+     * Returns the value options
+     * 
+     * @see Mage_Rule_Model_Condition_Combine::loadValueOptions()
+     * 
+     * @return FireGento_DynamicCategory_Model_Rule_Condition_Combine Self.
+     */
+    public function loadValueOptions()
+    {
+        $this->setValueOption(
+            array(
+                1 => Mage::helper('rule')->__('TRUE'),
+                //0 => Mage::helper('rule')->__('FALSE'),
+            )
+        );
+        return $this;
     }
 
     /**
@@ -52,13 +87,36 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
      */
     public function getNewChildSelectOptions()
     {
+        $productCondition = Mage::getModel('dynamiccategory/rule_condition_product');
+        $productAttributes = $productCondition->loadAttributeOptions()->getAttributeOption();
+
+        $pAttributes = array();
+        $iAttributes = array();
+        foreach ($productAttributes as $code=>$label) {
+            if (strpos($code, 'quote_item_') === 0) {
+                $iAttributes[] = array(
+                    'value' => 'dynamiccategory/rule_condition_product|'.$code,
+                    'label' => $label
+                );
+            } else {
+                $pAttributes[] = array(
+                    'value' => 'dynamiccategory/rule_condition_product|'.$code,
+                    'label' => $label
+                );
+            }
+        }
+
         $conditions = parent::getNewChildSelectOptions();
         $conditions = array_merge_recursive(
             $conditions,
             array(
                 array(
-                    'value' => 'dynamiccategory/rule_condition_product_found',
-                    'label' => Mage::helper('dynamiccategory')->__('Product attribute combination')
+                    'value' => 'dynamiccategory/rule_condition_product_combine',
+                    'label' => Mage::helper('dynamiccategory')->__('Conditions Combination')
+                ),
+                array(
+                    'label' => Mage::helper('dynamiccategory')->__('Product Attribute'),
+                    'value' => $pAttributes
                 ),
             )
         );
