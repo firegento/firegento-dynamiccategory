@@ -68,7 +68,7 @@ class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
         parent::_prepareLayout();
 
         // TODO: Change model to an own model
-        $model = Mage::getModel('salesrule/rule');
+        $model = Mage::getModel('dynamiccategory/rule');
         $form = new Varien_Data_Form();
 
         $form->setHtmlIdPrefix('dynamiccategory_');
@@ -89,7 +89,7 @@ class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
             array(
                 'name' => 'conditions',
                 'label' => $this->__('Conditions'),
-            	'title' => $this->__('Conditions'),
+                'title' => $this->__('Conditions'),
             )
         )->setRule($model)->setRenderer(Mage::getBlockSingleton('dynamiccategory/conditions'));
 

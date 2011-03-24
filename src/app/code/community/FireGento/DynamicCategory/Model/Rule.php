@@ -18,10 +18,10 @@
  * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  * @version   $Id:$
- * @since     0.1.0
+ * @since     0.2.0
  */
 /**
- * Controller for Ajax Requests.
+ * Rules for Conditions
  *
  * @category  FireGento
  * @package   FireGento_DynamicCategory
@@ -29,41 +29,19 @@
  * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  * @version   $Id:$
- * @since     0.1.0
+ * @since     0.2.0
  */
-class FireGento_DynamicCategory_DynamicController
-    extends Mage_Adminhtml_Controller_Action
+class FireGento_DynamicCategory_Model_Rule extends Mage_Rule_Model_Rule
 {
     /**
-     * newConditionHtmlAction()
+     * Gets an instance of the respective conditions model
      * 
-     * Returns the html code for a new condition in the resonse.
+     * @see Mage_Rule_Model_Rule::getConditionsInstance()
      * 
-     * @todo Implement own model logic
+     * @return FireGento_DynamicCategory_Model_Rule_Condition_Combine Condition Instance
      */
-    public function newConditionHtmlAction()
+    public function getConditionsInstance()
     {
-        $id = $this->getRequest()->getParam('id');
-        $typeArr = explode('|', str_replace('-', '/', $this->getRequest()->getParam('type')));
-        $type = $typeArr[0];
-
-        $model = Mage::getModel($type)
-            ->setId($id)
-            ->setType($type)
-            ->setRule(Mage::getModel('salesrule/rule'))
-            ->setPrefix('conditions');
-
-        if (!empty($typeArr[1])) {
-            $model->setAttribute($typeArr[1]);
-        }
-
-        if ($model instanceof Mage_Rule_Model_Condition_Abstract) {
-            $model->setJsFormObject($this->getRequest()->getParam('form'));
-            $html = $model->asHtmlRecursive();
-        } else {
-            $html = '';
-        }
-
-        $this->getResponse()->setBody($html);
-    }
+        return Mage::getModel('dynamiccategory/rule_condition_combine');
+    }    
 }

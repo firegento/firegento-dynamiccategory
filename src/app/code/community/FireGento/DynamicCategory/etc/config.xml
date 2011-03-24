@@ -24,7 +24,7 @@
  <config>
     <modules>
         <FireGento_DynamicCategory>
-            <version>0.1.0</version>
+            <version>0.2.0</version>
         </FireGento_DynamicCategory>
     </modules>
 
