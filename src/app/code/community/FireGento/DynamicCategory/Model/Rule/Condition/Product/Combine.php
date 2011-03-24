@@ -52,7 +52,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine
      */
     public function getNewChildSelectOptions()
     {
-        $productCondition = Mage::getModel('salesrule/rule_condition_product');
+        $productCondition = Mage::getModel('dynamiccategory/rule_condition_product');
         $productAttributes = $productCondition->loadAttributeOptions()->getAttributeOption();
 
         $pAttributes = array();
@@ -60,12 +60,12 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine
         foreach ($productAttributes as $code=>$label) {
             if (strpos($code, 'quote_item_') === 0) {
                 $iAttributes[] = array(
-                    'value' => 'salesrule/rule_condition_product|'.$code,
+                    'value' => 'dynamiccategory/rule_condition_product|'.$code,
                     'label' => $label
                 );
             } else {
                 $pAttributes[] = array(
-                    'value' => 'salesrule/rule_condition_product|'.$code,
+                    'value' => 'dynamiccategory/rule_condition_product|'.$code,
                     'label' => $label
                 );
             }

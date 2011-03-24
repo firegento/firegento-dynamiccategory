@@ -50,20 +50,18 @@ class FireGento_DynamicCategory_DynamicController
         $model = Mage::getModel($type)
             ->setId($id)
             ->setType($type)
-            ->setRule(Mage::getModel('salesrule/rule'))
+            ->setRule(Mage::getModel('dynamiccategory/rule'))
             ->setPrefix('conditions');
 
         if (!empty($typeArr[1])) {
             $model->setAttribute($typeArr[1]);
         }
-
         if ($model instanceof Mage_Rule_Model_Condition_Abstract) {
             $model->setJsFormObject($this->getRequest()->getParam('form'));
             $html = $model->asHtmlRecursive();
         } else {
             $html = '';
         }
-
         $this->getResponse()->setBody($html);
     }
 }
