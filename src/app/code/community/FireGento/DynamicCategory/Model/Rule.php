@@ -43,5 +43,25 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_Rule_Model_Rule
     public function getConditionsInstance()
     {
         return Mage::getModel('dynamiccategory/rule_condition_combine');
+    }  
+   
+    /**
+     * Regenerate all Stores index
+     *
+     * Examples:
+     * (null, null) => Regenerate index for all stores
+     * (1, null)    => Regenerate index for store Id=1
+     * (1, 2)       => Regenerate index for product Id=2 and its store view Id=1
+     * (null, 2)    => Regenerate index for all store views of product Id=2
+     *
+     * @param int $storeId Store View Id
+     * @param int $productId Product Entity Id
+     * @return Flagbit_SpecialPriceStatus_Model_Status
+     */
+    public function rebuildIndex($storeId = null, $productId = null)
+    {
+        $this->getResource()->rebuildIndex($storeId, $productId);
+        return $this;
     }    
+    
 }

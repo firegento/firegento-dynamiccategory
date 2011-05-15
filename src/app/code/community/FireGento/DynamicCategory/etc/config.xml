@@ -46,6 +46,14 @@
                 <class>FireGento_DynamicCategory_Model</class>
             </dynamiccategory>
         </models>
+        
+        <index>
+            <indexer>
+                <dynamiccategory>
+                    <model>dynamiccategory/indexer_rule</model>
+                </dynamiccategory>
+            </indexer>
+        </index>        
     </global>
 
     <admin>
