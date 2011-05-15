@@ -24,7 +24,7 @@
  <config>
     <modules>
         <FireGento_DynamicCategory>
-            <version>0.2.2</version>
+            <version>0.2.3</version>
         </FireGento_DynamicCategory>
     </modules>
 
@@ -44,8 +44,38 @@
         <models>
             <dynamiccategory>
                 <class>FireGento_DynamicCategory_Model</class>
+                <resourceModel>dynamiccategory_mysql4</resourceModel>
             </dynamiccategory>
+            <dynamiccategory_mysql4>
+                <class>FireGento_DynamicCategory_Model_Mysql4</class>
+                <entities>
+                    <rule>
+                        <table>dynamiccategory_rule</table>
+                    </rule>
+                </entities>
+            </dynamiccategory_mysql4>
         </models>
+        
+        <resources>
+            <dynamiccategory_setup>
+                <setup>
+                    <module>FireGento_DynamicCategory</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </dynamiccategory_setup>
+            <dynamiccategory_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </dynamiccategory_write>
+            <dynamiccategory_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </dynamiccategory_read>
+        </resources>
     </global>
 
     <admin>
