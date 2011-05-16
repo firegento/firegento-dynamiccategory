@@ -1,1 +1,6 @@
-cache.properties
+/build.properties
+/.buildpath
+/.settings
+/.externalToolBuilders
+/.project
+/cache.properties
