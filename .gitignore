@@ -4,3 +4,5 @@
 /.externalToolBuilders
 /.project
 /cache.properties
+.DS_Store
+.vagrant
