@@ -32,7 +32,7 @@
  * @since     0.2.0
  */
 class FireGento_DynamicCategory_Model_Rule_Condition_Combine
-    extends Mage_Rule_Model_Condition_Combine
+    extends Mage_CatalogRule_Model_Rule_Condition_Combine
 {
     /**
      * Class Constructor
@@ -59,7 +59,8 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
         );
         return $this;
     }
-
+  
+    
     /**
      * Returns the value options
      * 
@@ -78,48 +79,4 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
         return $this;
     }
 
-    /**
-     * Retrieve the condition options for the select field.
-     * 
-     * @see Mage_Rule_Model_Condition_Abstract::getNewChildSelectOptions()
-     * 
-     * @return array Conditions
-     */
-    public function getNewChildSelectOptions()
-    {
-        $productCondition = Mage::getModel('dynamiccategory/rule_condition_product');
-        $productAttributes = $productCondition->loadAttributeOptions()->getAttributeOption();
-
-        $pAttributes = array();
-        $iAttributes = array();
-        foreach ($productAttributes as $code=>$label) {
-            if (strpos($code, 'quote_item_') === 0) {
-                $iAttributes[] = array(
-                    'value' => 'dynamiccategory/rule_condition_product|'.$code,
-                    'label' => $label
-                );
-            } else {
-                $pAttributes[] = array(
-                    'value' => 'dynamiccategory/rule_condition_product|'.$code,
-                    'label' => $label
-                );
-            }
-        }
-
-        $conditions = parent::getNewChildSelectOptions();
-        $conditions = array_merge_recursive(
-            $conditions,
-            array(
-                array(
-                    'value' => 'dynamiccategory/rule_condition_product_combine',
-                    'label' => Mage::helper('dynamiccategory')->__('Conditions Combination')
-                ),
-                array(
-                    'label' => Mage::helper('dynamiccategory')->__('Product Attribute'),
-                    'value' => $pAttributes
-                ),
-            )
-        );
-        return $conditions;
-    }
 }

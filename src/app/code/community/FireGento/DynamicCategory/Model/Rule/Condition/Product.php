@@ -212,6 +212,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     public function collectValidatedAttributes($productCollection)
     {
+        Mage::log(get_class($productCollection));
         $attribute = $this->getAttribute();
         if ('category_ids' != $attribute) {
             if ($this->getAttributeObject()->isScopeGlobal()) {

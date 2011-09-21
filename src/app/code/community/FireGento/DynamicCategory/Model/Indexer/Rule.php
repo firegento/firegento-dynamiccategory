@@ -11,7 +11,10 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
         Mage_Catalog_Model_Product::ENTITY => array(
             Mage_Index_Model_Event::TYPE_SAVE,
             Mage_Index_Model_Event::TYPE_MASS_ACTION
-        )
+        ),
+        Mage_Catalog_Model_Category::ENTITY => array(
+            Mage_Index_Model_Event::TYPE_SAVE,
+        )        
     );
 
     /**
@@ -61,10 +64,33 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
     {
         switch ($event->getEntity()) {
             case Mage_Catalog_Model_Product::ENTITY:
-                $this->_registerCatalogProductEvent($event);
+                //$this->_registerCatalogProductEvent($event);
                 break;
+            case Mage_Catalog_Model_Category::ENTITY:
+                $this->_registerCatalogCategoryEvent($event);
+                break;                
         }
     }
+    
+    /**
+     * Register data required by catalog category process in event object
+     *
+     * @param Mage_Index_Model_Event $event
+     * @return Mage_Catalog_Model_Category_Indexer_Flat
+     */
+    protected function _registerCatalogCategoryEvent(Mage_Index_Model_Event $event)
+    {
+        switch ($event->getType()) {
+            case Mage_Index_Model_Event::TYPE_SAVE:
+                /* @var $category Mage_Catalog_Model_Category */
+                $category = $event->getDataObject();
+                
+                $event->addNewData('dynamiccategory_save_category_id', $category->getId());
+                break;
+        }
+        return $this;
+    }    
+    
 
     /**
      * Register data required by catatalog product process in event object
@@ -117,6 +143,11 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
     protected function _processEvent(Mage_Index_Model_Event $event)
     {
         $data = $event->getNewData();
+        
+        if (!empty($data['dynamiccategory_save_category_id'])) {
+            $this->_getIndexer()->rebuildIndex(null, $data['dynamiccategory_save_category_id']);
+        }
+        return;
 
         if (!empty($data['dynamiccategory_fulltext_reindex_all'])) {
             $this->reindexAll();

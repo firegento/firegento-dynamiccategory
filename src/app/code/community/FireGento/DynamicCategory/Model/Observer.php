@@ -60,6 +60,56 @@ class FireGento_DynamicCategory_Model_Observer
     }
 
     /**
+     * 
+     * 
+     * @param Varien_Event_Observer $observer Observer Object
+     */    
+    public function adminhtmlBlockHtmlBefore(Varien_Event_Observer $observer)
+    {
+        /*@var $block Mage_Adminhtml_Block_Widget_Grid */    
+        $block = $observer->getBlock();        
+        
+        if($block instanceof Mage_Adminhtml_Block_Widget_Grid
+            && $block->getId() == 'catalog_category_products'
+            && $block->getCategory()->getId()){
+                 
+            $block->addColumn('dynamic', array(
+                'header'    => Mage::helper('catalog')->__('Type'),
+                'width'     => '80',
+                'index'     => 'dynamic',
+            	'sortable'		=> false,
+            	'filter'		=> false,            
+                'frame_callback' => array($this, 'decorateType')  
+            ));
+        }
+    }
+
+    /**
+     * Decorate Type column values
+     *
+     * @return string
+     */
+    public function decorateType($value, $row, $column, $isExport)
+    {
+        $categoryId = $column->getGrid()->getCategory()->getId();
+        if($categoryId){
+            $productIds = Mage::getResourceSingleton('dynamiccategory/rule')->getDynamicProductIdsByCategory($categoryId);
+            
+            $class = '';
+            if(in_array($row->getId(), $productIds)){
+                $class = 'grid-severity-major';
+                $value = $column->getGrid()->__('dynamic');
+            }else{
+                $class = 'grid-severity-notice';
+                $value = $column->getGrid()->__('static');
+            }
+    
+            return '<span class="'.$class.'"><span>'.$value.'</span></span>';
+        }
+    }      
+    
+    
+    /**
      * catalogCategoryPrepareSave()
      * 
      * @param Varien_Event_Observer $observer Observer Object
@@ -70,69 +120,47 @@ class FireGento_DynamicCategory_Model_Observer
     {
         $category = $observer->getEvent()->getCategory();
         $request  = $observer->getEvent()->getRequest();
-
-        if ($rules = $request->getPost('rule')) {
-            $where = array();
-            $rules = $rules['conditions'];
-            foreach ($rules as $rule) {
-                if (array_key_exists('attribute', $rule)) {
-                    $where[$rule['attribute']][] = $rule['value'];
-                }
-            }
-
-            if ($where && is_array($where)) {
-                $collection = Mage::getModel('catalog/product')->getCollection();
-                $collection->addAttributeToSelect('*');
-
-                foreach ($where as $key => $val) {
-                    $collection->addFieldtoFilter($key, $val);
-                }
-
-                if (count($collection->getData()) > 0) {
-                    $categoryProducts = explode('&', $request->getPost('category_products'));
-                    foreach ($collection->getData() as $product) {
-                        // Check if product is already linked, if not add to list
-                        $needle = $product['entity_id'].'=';
-                        if (!$this->_arraySearchValues($needle, $categoryProducts)) {
-                            $categoryProducts[] = $product['entity_id'].'=10';
-                        }
-                        $categoryProductsNew = implode('&', $categoryProducts);
-
-                        // Set linked products in category model
-                        $newProducts = array();
-                        parse_str($categoryProductsNew, $newProducts);
-                        $observer->getEvent()->getCategory()->setPostedProducts($newProducts);
-                    }
-                }
-            }
+        
+        if ($request->getPost('rule')) {
+            
+            /*@var $model FireGento_DynamicCategory_Model_Rule */
+            $model = Mage::getModel('dynamiccategory/rule');
+            $data = $request->getPost();
+            $data = $this->_filterDates($data, array('from_date', 'to_date'));
+            if(isset($data['rule']['conditions'])){
+                $category->setDynamiccategory($data['rule']['conditions']);
+            }          
         }
         return $this;
     }
-
+   
+    
     /**
-     * _arraySearchValues()
-     * 
-     * Searches for an specific needle in the values of an given haystack
-     * 
-     * @param string $needle   String to search
-     * @param array  $haystack Search array
-     * @param int    $skip     Parameter for substr.
-     * 
-     * @return boolean Found/Not Found
+     * Convert dates in array from localized to internal format
+     *
+     * @param   array $array
+     * @param   array $dateFields
+     * @return  array
      */
-    private function _arraySearchValues($needle = null, $haystack = null, $skip = 0)
+    protected function _filterDates($array, $dateFields)
     {
-        if ($needle == null || $haystack == null) {
-            die('$needle and $$haystack are mandatory for function _arraySearchValues()');   
+        if (empty($dateFields)) {
+            return $array;
         }
-        foreach ($haystack as $key => $val) {
-            if ($skip != 0) {
-                $val = substr($val, $skip);   
-            }
-            if (strpos($val, $needle) !== false) {
-                return true;   
+        $filterInput = new Zend_Filter_LocalizedToNormalized(array(
+            'date_format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT)
+        ));
+        $filterInternal = new Zend_Filter_NormalizedToLocalized(array(
+            'date_format' => Varien_Date::DATE_INTERNAL_FORMAT
+        ));
+
+        foreach ($dateFields as $dateField) {
+            if (array_key_exists($dateField, $array) && !empty($dateField)) {
+                $array[$dateField] = $filterInput->filter($array[$dateField]);
+                $array[$dateField] = $filterInternal->filter($array[$dateField]);
             }
         }
-        return false;
-    }
+        return $array;
+    }    
+
 }

@@ -67,8 +67,11 @@ class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
     {
         parent::_prepareLayout();
 
-        // TODO: Change model to an own model
-        $model = Mage::getModel('dynamiccategory/rule');
+        $model = Mage::getSingleton('dynamiccategory/rule');      
+        $data = array();
+        $data['conditions'] = $this->getCategory()->getDynamiccategory();
+        $model->loadPost($data);           
+           
         $form = new Varien_Data_Form();
 
         $form->setHtmlIdPrefix('dynamiccategory_');

@@ -24,7 +24,7 @@
  <config>
     <modules>
         <FireGento_DynamicCategory>
-            <version>0.2.3</version>
+            <version>1.0.0</version>
         </FireGento_DynamicCategory>
     </modules>
 
@@ -48,26 +48,22 @@
             </dynamiccategory>
             <dynamiccategory_mysql4>
                 <class>FireGento_DynamicCategory_Model_Mysql4</class>
-                <entities>
-                    <rule>
-                        <table>dynamiccategory_rule</table>
-                    </rule>
-                </entities>
             </dynamiccategory_mysql4>
         </models>
-        
+
         <index>
             <indexer>
                 <dynamiccategory>
                     <model>dynamiccategory/indexer_rule</model>
                 </dynamiccategory>
             </indexer>
-        </index>          
-        
+        </index>
+ 
         <resources>
             <dynamiccategory_setup>
                 <setup>
                     <module>FireGento_DynamicCategory</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
                 </setup>
                 <connection>
                     <use>core_setup</use>
@@ -117,6 +113,14 @@
                     </dynamiccategory>
                 </observers>
             </catalog_category_prepare_save>
+			<adminhtml_block_html_before>
+                <observers>
+                    <dynamiccategory>
+                        <class>dynamiccategory/observer</class>
+                        <method>adminhtmlBlockHtmlBefore</method>
+                    </dynamiccategory>
+                </observers>				
+			</adminhtml_block_html_before>	
         </events>
 
         <translate>
