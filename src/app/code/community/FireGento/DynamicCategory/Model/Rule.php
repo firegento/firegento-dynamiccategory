@@ -1,15 +1,15 @@
 <?php
-/**                                                                       
+/**
  * This file is part of the FIREGENTO project.
- * 
- * FireGento_DynamicCategory is free software; you can redistribute it and/or 
- * modify it under the terms of the GNU General Public License version 3 as 
+ *
+ * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
- * 
- * This script is distributed in the hope that it will be useful, but WITHOUT 
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- * 
+ *
  * PHP version 5
  *
  * @category  FireGento
@@ -33,25 +33,27 @@
  */
 class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
 {
-
+    /**
+     *
+     * Enter description here ...
+     */
     protected function _construct()
     {
         $this->_init('dynamiccategory/rule');
     }
-    
+
     /**
      * Gets an instance of the respective conditions model
-     * 
+     *
      * @see Mage_Rule_Model_Rule::getConditionsInstance()
-     * 
+     *
      * @return FireGento_DynamicCategory_Model_Rule_Condition_Combine Condition Instance
      */
     public function getConditionsInstance()
     {
         return Mage::getModel('dynamiccategory/rule_condition_combine');
-    }  
+    }
 
-    
     /**
      * Regenerate all Stores index
      *
@@ -63,21 +65,25 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
      *
      * @param int $storeId Store View Id
      * @param int $productId Product Entity Id
-     * @return Flagbit_SpecialPriceStatus_Model_Status
+     * @return FireGento_DynamicCategory_Model_Rule Self.
      */
     public function rebuildIndex($storeId = null, $categoryIds = null, $productIds = null)
-    {    
+    {
         if($categoryIds !== null && !is_array($categoryIds)){
             $categoryIds = array($categoryIds);
         }
-        $this->setWebsiteIds(($storeId === null ? implode(',', array_keys(Mage::app()->getWebsites())) : $storeId));        
+        $this->setWebsiteIds(($storeId === null ? implode(',', array_keys(Mage::app()->getWebsites())) : $storeId));
 
         $this->getResource()->rebuildIndex($this, $storeId, $categoryIds);
 
         return $this;
-    }   
-    
-    
+    }
+
+    /**
+     *
+     * Enter description here ...
+     * @param array $rule
+     */
     public function loadPost(array $rule)
     {
         $arr = $this->_convertFlatToRecursive($rule);
@@ -87,9 +93,8 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
         if (isset($arr['actions'])) {
             $this->getActions()->setActions(array())->loadArray($arr['actions'][1]);
         }
-
         return $this;
-    }    
+    }
 
     /**
      * Callback function for product matching
@@ -104,9 +109,8 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
         if ($this->getConditions()->validate($product)) {
             $this->_productIds[] = $product->getId();
         }
-    }    
-    
-    
+    }
+
     /**
      * Get array of product ids which are matched by rule
      *
@@ -134,8 +138,6 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
                 );
             }
         }
-
         return $this->_productIds;
-    }    
-    
+    }
 }
