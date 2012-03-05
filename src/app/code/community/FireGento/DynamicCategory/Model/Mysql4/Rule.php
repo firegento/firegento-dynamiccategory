@@ -63,12 +63,12 @@ class FireGento_DynamicCategory_Model_Mysql4_Rule extends Mage_Core_Model_Mysql4
  
         foreach($rules as $categoryId => $rule){
             $ruleArray = @unserialize($rule);
-            if(!is_array($ruleArray)){
-                continue;
-            }
-            $object->setData('conditions', $ruleArray);
-            $object->loadPost(array('conditions' => $ruleArray));
-            $ids = $object->getMatchingProductIds();
+            $ids = array();
+			if(is_array($ruleArray) && count($ruleArray) > 1){
+	            $object->setData('conditions', $ruleArray);
+	            $object->loadPost(array('conditions' => $ruleArray));
+	            $ids = $object->getMatchingProductIds();
+			}
             $this->_saveCategories($ids, $categoryId);
         }
     }
