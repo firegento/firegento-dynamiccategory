@@ -15,9 +15,9 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
+ * @version   1.0.0
  * @since     0.1.0
  */
 /**
@@ -26,19 +26,18 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
+ * @version   1.0.0
  * @since     0.1.0
  */
 class FireGento_DynamicCategory_Model_Observer
 {
     /**
-     * adminhtmlCatalogCategoryTabs()
-     *
      * Append a custom block to the category.product.grid block.
      *
-     * @param Varien_Event_Observer $observer Observer Object
+     * @param Varien_Event_Observer $observer
+     * @return void
      */
     public function adminhtmlCatalogCategoryTabs(Varien_Event_Observer $observer)
     {
@@ -46,8 +45,13 @@ class FireGento_DynamicCategory_Model_Observer
 
         Mage::app()->getLayout()->getBlock('head')->addJs('mage/adminhtml/rules.js');
 
-        $originalBlock = Mage::app()->getLayout()->createBlock('adminhtml/catalog_category_tab_product', 'category.product.grid')->toHtml();
-        $appendBlock = Mage::app()->getLayout()->createBlock('dynamiccategory/adminhtml_category_dynamic', 'dynamiccategory.switcher')->toHtml();
+        $originalBlock = Mage::app()->getLayout()
+            ->createBlock('adminhtml/catalog_category_tab_product', 'category.product.grid')
+            ->toHtml();
+
+        $appendBlock = Mage::app()->getLayout()
+            ->createBlock('dynamiccategory/adminhtml_category_dynamic', 'dynamiccategory.switcher')
+            ->toHtml();
 
         $tabs->removeTab('products');
         $tabs->addTab(
@@ -60,27 +64,31 @@ class FireGento_DynamicCategory_Model_Observer
     }
 
     /**
+     * Prepare the adminhtml category products view
      *
-     *
-     * @param Varien_Event_Observer $observer Observer Object
+     * @param Varien_Event_Observer $observer
+     * @return void
      */
     public function adminhtmlBlockHtmlBefore(Varien_Event_Observer $observer)
     {
-        /*@var $block Mage_Adminhtml_Block_Widget_Grid */
+        /* @var $block Mage_Adminhtml_Block_Widget_Grid */
         $block = $observer->getBlock();
 
-        if($block instanceof Mage_Adminhtml_Block_Widget_Grid
+        if ($block instanceof Mage_Adminhtml_Block_Widget_Grid
             && $block->getId() == 'catalog_category_products'
-            && $block->getCategory()->getId()){
-
-            $block->addColumn('dynamic', array(
-                'header'    => Mage::helper('catalog')->__('Type'),
-                'width'     => '80',
-                'index'     => 'dynamic',
-                'sortable'        => false,
-                'filter'        => false,
-                'frame_callback' => array($this, 'decorateType')
-            ));
+            && $block->getCategory()->getId()
+        ) {
+            $block->addColumn(
+                'dynamic',
+                array(
+                    'header'         => Mage::helper('catalog')->__('Type'),
+                    'width'          => '80',
+                    'index'          => 'dynamic',
+                    'sortable'       => false,
+                    'filter'         => false,
+                    'frame_callback' => array($this, 'decorateType')
+                )
+            );
         }
     }
 
@@ -92,14 +100,15 @@ class FireGento_DynamicCategory_Model_Observer
     public function decorateType($value, $row, $column, $isExport)
     {
         $categoryId = $column->getGrid()->getCategory()->getId();
-        if($categoryId){
-            $productIds = Mage::getResourceSingleton('dynamiccategory/rule')->getDynamicProductIdsByCategory($categoryId);
+        if ($categoryId) {
+            $productIds = Mage::getResourceSingleton('dynamiccategory/rule')
+                ->getDynamicProductIdsByCategory($categoryId);
 
             $class = '';
-            if(in_array($row->getId(), $productIds)){
+            if (in_array($row->getId(), $productIds)) {
                 $class = 'grid-severity-major';
                 $value = $column->getGrid()->__('dynamic');
-            }else{
+            } else {
                 $class = 'grid-severity-notice';
                 $value = $column->getGrid()->__('static');
             }
@@ -108,13 +117,11 @@ class FireGento_DynamicCategory_Model_Observer
         }
     }
 
-
     /**
-     * catalogCategoryPrepareSave()
+     * Observe the category save
      *
-     * @param Varien_Event_Observer $observer Observer Object
-     *
-     * @return Flagbit_DynamicCategory_Model_Observer Self.
+     * @param Varien_Event_Observer $observer
+     * @return FireGento_DynamicCategory_Model_Observer
      */
     public function catalogCategoryPrepareSave(Varien_Event_Observer $observer)
     {
@@ -122,25 +129,24 @@ class FireGento_DynamicCategory_Model_Observer
         $request  = $observer->getEvent()->getRequest();
 
         if ($request->getPost('rule')) {
-
-            /*@var $model FireGento_DynamicCategory_Model_Rule */
+            /* @var $model FireGento_DynamicCategory_Model_Rule */
             $model = Mage::getModel('dynamiccategory/rule');
             $data = $request->getPost();
             $data = $this->_filterDates($data, array('from_date', 'to_date'));
-            if(isset($data['rule']['conditions'])){
+
+            if (isset($data['rule']['conditions'])) {
                 $category->setDynamiccategory($data['rule']['conditions']);
             }
         }
         return $this;
     }
 
-
     /**
      * Convert dates in array from localized to internal format
      *
-     * @param   array $array
-     * @param   array $dateFields
-     * @return  array
+     * @param  array $array
+     * @param  array $dateFields
+     * @return array
      */
     protected function _filterDates($array, $dateFields)
     {
@@ -162,5 +168,4 @@ class FireGento_DynamicCategory_Model_Observer
         }
         return $array;
     }
-
 }

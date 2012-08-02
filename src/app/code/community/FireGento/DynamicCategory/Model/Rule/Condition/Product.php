@@ -1,23 +1,23 @@
 <?php
-/**                                                                       
+/**
  * This file is part of the FIREGENTO project.
- * 
- * FireGento_DynamicCategory is free software; you can redistribute it and/or 
- * modify it under the terms of the GNU General Public License version 3 as 
+ *
+ * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
- * 
- * This script is distributed in the hope that it will be useful, but WITHOUT 
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- * 
+ *
  * PHP version 5
  *
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
+ * @version   1.0.0
  * @since     0.2.1
  */
 /**
@@ -26,9 +26,9 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
+ * @version   1.0.0
  * @since     0.2.1
  */
 class FireGento_DynamicCategory_Model_Rule_Condition_Product
@@ -73,7 +73,6 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      * Add special attributes
      *
      * @param array &$attributes Attributes
-     * 
      * @return void
      */
     protected function _addSpecialAttributes(array &$attributes)
@@ -106,7 +105,6 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      * Retrieve value by option
      *
      * @param mixed $option
-     * 
      * @return string Value of an Option
      */
     public function getValueOption($option=null)
@@ -186,7 +184,9 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
         }
 
         if (!empty($image)) {
-            $html = '<a href="javascript:void(0)" class="rule-chooser-trigger"><img src="' . $image . '" alt="" class="v-middle rule-chooser-trigger" title="' . Mage::helper('rule')->__('Open Chooser') . '" /></a>';
+            $html = '<a href="javascript:void(0)" class="rule-chooser-trigger">
+                <img src="' . $image . '" alt="" class="v-middle rule-chooser-trigger"
+                title="' . Mage::helper('rule')->__('Open Chooser') . '" /></a>';
         }
         return $html;
     }
@@ -207,7 +207,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      * Collect validated attributes
      *
      * @param Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection $productCollection Collection
-     * 
+     *
      * @return FireGento_DynamicCategory_Model_Rule_Condition_Product Self.
      */
     public function collectValidatedAttributes($productCollection)
@@ -235,25 +235,30 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     public function getInputType()
     {
-        if ($this->getAttribute()==='attribute_set_id') {
+        if ($this->getAttribute() === 'attribute_set_id') {
             return 'select';
         }
+
         if (!is_object($this->getAttributeObject())) {
             return 'string';
         }
+
         switch ($this->getAttributeObject()->getFrontendInput()) {
             case 'select':
-                return 'select';
-
+                $frontendInput = 'select';
+                break;
             case 'multiselect':
-                return 'multiselect';
-
+                $frontendInput = 'multiselect';
+                break;
             case 'date':
-                return 'date';
-
+                $frontendInput = 'date';
+                break;
             default:
-                return 'string';
+                $frontendInput = 'string';
+                break;
         }
+
+        return $frontendInput;
     }
 
     /**
@@ -263,25 +268,30 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     public function getValueElementType()
     {
-        if ($this->getAttribute()==='attribute_set_id') {
+        if ($this->getAttribute() === 'attribute_set_id') {
             return 'select';
         }
+
         if (!is_object($this->getAttributeObject())) {
             return 'text';
         }
+
         switch ($this->getAttributeObject()->getFrontendInput()) {
             case 'select':
-                return 'select';
-
+                $frontendInput = 'select';
+                break;
             case 'multiselect':
-                return 'multiselect';
-
+                $frontendInput = 'multiselect';
+                break;
             case 'date':
-                return 'date';
-
+                $frontendInput = 'date';
+                break;
             default:
-                return 'text';
+                $frontendInput = 'text';
+                break;
         }
+
+        return $frontendInput;
     }
 
     /**
@@ -309,25 +319,30 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     public function getExplicitApply()
     {
+        $return = false;
+
         switch ($this->getAttribute()) {
             case 'sku':
             case 'category_ids':
-                return true;
+                $return = true;
+                break;
         }
+
         if (is_object($this->getAttributeObject())) {
             switch ($this->getAttributeObject()->getFrontendInput()) {
                 case 'date':
-                    return true;
+                    $return = true;
+                    break;
             }
         }
-        return false;
+
+        return $return;
     }
 
     /**
      * Load array
      *
      * @param array $arr Attribute Array
-     * 
      * @return FireGento_DynamicCategory_Model_Rule_Condition_Product Self.
      */
     public function loadArray($arr)
@@ -336,8 +351,17 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
         $attribute = $this->getAttributeObject();
 
         if ($attribute && $attribute->getBackendType() == 'decimal') {
-            $arr['value'] = isset($arr['value']) ? Mage::app()->getLocale()->getNumber($arr['value']) : false;
-            $arr['is_value_parsed'] = isset($arr['is_value_parsed']) ? Mage::app()->getLocale()->getNumber($arr['is_value_parsed']) : false;
+            if (isset($arr['value'])) {
+                $arr['value'] = Mage::app()->getLocale()->getNumber($arr['value']);
+            } else {
+                $arr['value'] = false;
+            }
+
+            if (isset($arr['is_value_parsed'])) {
+                $arr['is_value_parsed'] = Mage::app()->getLocale()->getNumber($arr['is_value_parsed']);
+            } else {
+                $arr['is_value_parsed'] = false;
+            }
         }
 
         return parent::loadArray($arr);
@@ -347,7 +371,6 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      * Validate product attrbute value for condition
      *
      * @param Varien_Object $object Object
-     * 
      * @return boolean True/False
      */
     public function validate(Varien_Object $object)

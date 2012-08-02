@@ -15,9 +15,9 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id:$
+ * @version   1.0.0
  * @since     0.2.0
  */
 /**
@@ -26,16 +26,17 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2011 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   $Id$
+ * @version   1.0.0
  * @since     0.2.0
  */
 class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
 {
     /**
-     *
      * Enter description here ...
+     *
+     * @return void
      */
     protected function _construct()
     {
@@ -46,7 +47,6 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
      * Gets an instance of the respective conditions model
      *
      * @see Mage_Rule_Model_Rule::getConditionsInstance()
-     *
      * @return FireGento_DynamicCategory_Model_Rule_Condition_Combine Condition Instance
      */
     public function getConditionsInstance()
@@ -63,26 +63,27 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
      * (1, 2)       => Regenerate index for product Id=2 and its store view Id=1
      * (null, 2)    => Regenerate index for all store views of product Id=2
      *
-     * @param int $storeId Store View Id
+     * @param int $storeId   Store View Id
      * @param int $productId Product Entity Id
      * @return FireGento_DynamicCategory_Model_Rule Self.
      */
     public function rebuildIndex($storeId = null, $categoryIds = null, $productIds = null)
     {
-        if($categoryIds !== null && !is_array($categoryIds)){
+        if ($categoryIds !== null && !is_array($categoryIds)) {
             $categoryIds = array($categoryIds);
         }
-        $this->setWebsiteIds(($storeId === null ? implode(',', array_keys(Mage::app()->getWebsites())) : $storeId));
 
+        $this->setWebsiteIds(($storeId === null ? implode(',', array_keys(Mage::app()->getWebsites())) : $storeId));
         $this->getResource()->rebuildIndex($this, $storeId, $categoryIds);
 
         return $this;
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @param array $rule
+     * @return FireGento_DynamicCategory_Model_Rule
      */
     public function loadPost(array $rule)
     {

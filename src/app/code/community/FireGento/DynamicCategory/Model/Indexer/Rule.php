@@ -1,5 +1,36 @@
 <?php
-
+/**
+ * This file is part of the FIREGENTO project.
+ *
+ * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * PHP version 5
+ *
+ * @category  FireGento
+ * @package   FireGento_DynamicCategory
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ * @version   1.0.0
+ * @since     0.2.0
+ */
+/**
+ * Indexer Model
+ *
+ * @category  FireGento
+ * @package   FireGento_DynamicCategory
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ * @version   1.0.0
+ * @since     0.2.3
+ */
 class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Indexer_Abstract
 {
     /**
@@ -14,7 +45,7 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
         ),
         Mage_Catalog_Model_Category::ENTITY => array(
             Mage_Index_Model_Event::TYPE_SAVE,
-        )        
+        )
     );
 
     /**
@@ -27,7 +58,7 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
     /**
      * Retrieve Special Price Status Indexer instance
      *
-     * @return Flagbit_SpecialPriceStatus_Model_Status
+     * @return FireGento_DynamicCategory_Model_Indexer_Rule
      */
     protected function _getIndexer()
     {
@@ -54,11 +85,11 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
         return Mage::helper('dynamiccategory')->__('Rule based Relation Builder');
     }
 
-
     /**
      * Register data required by process in event object
      *
      * @param Mage_Index_Model_Event $event
+     * @return void
      */
     protected function _registerEvent(Mage_Index_Model_Event $event)
     {
@@ -68,15 +99,15 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
                 break;
             case Mage_Catalog_Model_Category::ENTITY:
                 $this->_registerCatalogCategoryEvent($event);
-                break;                
+                break;
         }
     }
-    
+
     /**
      * Register data required by catalog category process in event object
      *
      * @param Mage_Index_Model_Event $event
-     * @return Mage_Catalog_Model_Category_Indexer_Flat
+     * @return FireGento_DynamicCategory_Model_Indexer_Rule
      */
     protected function _registerCatalogCategoryEvent(Mage_Index_Model_Event $event)
     {
@@ -84,19 +115,18 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
             case Mage_Index_Model_Event::TYPE_SAVE:
                 /* @var $category Mage_Catalog_Model_Category */
                 $category = $event->getDataObject();
-                
+
                 $event->addNewData('dynamiccategory_save_category_id', $category->getId());
                 break;
         }
         return $this;
-    }    
-    
+    }
 
     /**
      * Register data required by catatalog product process in event object
      *
      * @param Mage_Index_Model_Event $event
-     * @return Flagbit_SpecialPriceStatus_Model_Indexer_Status
+     * @return FireGento_DynamicCategory_Model_Indexer_Rule
      */
     protected function _registerCatalogProductEvent(Mage_Index_Model_Event $event)
     {
@@ -104,7 +134,6 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
             case Mage_Index_Model_Event::TYPE_SAVE:
                 /* @var $product Mage_Catalog_Model_Product */
                 $product = $event->getDataObject();
-
                 $event->addNewData('dynamiccategory_update_product_id', $product->getId());
                 break;
             case Mage_Index_Model_Event::TYPE_MASS_ACTION:
@@ -113,7 +142,6 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
 
                 $reindexData  = array();
                 $rebuildIndex = false;
-
 
                 // check changed websites
                 if ($actionObject->getWebsiteIds()) {
@@ -139,11 +167,12 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
      * Process event
      *
      * @param Mage_Index_Model_Event $event
+     * @return void
      */
     protected function _processEvent(Mage_Index_Model_Event $event)
     {
         $data = $event->getNewData();
-        
+
         if (!empty($data['dynamiccategory_save_category_id'])) {
             $this->_getIndexer()->rebuildIndex(null, $data['dynamiccategory_save_category_id']);
         }
@@ -180,6 +209,7 @@ class FireGento_DynamicCategory_Model_Indexer_Rule extends Mage_Index_Model_Inde
     /**
      * Rebuild all index data
      *
+     * @return void
      */
     public function reindexAll()
     {
