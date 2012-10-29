@@ -1,0 +1,4 @@
+src/app/code/community/FireGento/DynamicCategory	app/code/community/FireGento/DynamicCategory
+src/app/design/adminhtml/default/default/template/dynamiccategory/fieldset.phtml	app/design/adminhtml/default/default/template/dynamiccategory/fieldset.phtml
+src/app/etc/modules/FireGento_DynamicCategory.xml	app/etc/modules/FireGento_DynamicCategory.xml
+src/app/locale/de_DE/FireGento_DynamicCategory.csv	app/locale/de_DE/FireGento_DynamicCategory.csv
