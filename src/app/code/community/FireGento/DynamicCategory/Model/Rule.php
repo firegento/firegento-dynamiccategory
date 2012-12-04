@@ -125,7 +125,7 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
             $websiteIds = explode(',', $this->getWebsiteIds());
 
             if ($websiteIds) {
-                $productCollection = Mage::getResourceModel('catalog/product_collection');
+                $productCollection = clone Mage::getResourceModel('catalog/product_collection');
                 $productCollection->addWebsiteFilter($websiteIds);
 
                 $this->getConditions()->collectValidatedAttributes($productCollection);
