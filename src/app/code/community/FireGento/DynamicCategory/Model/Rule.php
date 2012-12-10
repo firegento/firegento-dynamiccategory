@@ -119,25 +119,24 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
      */
     public function getMatchingProductIds()
     {
-        if (is_null($this->_productIds)) {
-            $this->_productIds = array();
-            $this->setCollectedAttributes(array());
-            $websiteIds = explode(',', $this->getWebsiteIds());
 
-            if ($websiteIds) {
-                $productCollection = clone Mage::getResourceModel('catalog/product_collection');
-                $productCollection->addWebsiteFilter($websiteIds);
+        $this->_productIds = array();
+        $this->setCollectedAttributes(array());
+        $websiteIds = explode(',', $this->getWebsiteIds());
 
-                $this->getConditions()->collectValidatedAttributes($productCollection);
-                Mage::getSingleton('core/resource_iterator')->walk(
-                    $productCollection->getSelect(),
-                    array(array($this, 'callbackValidateProduct')),
-                    array(
-                        'attributes' => $this->getCollectedAttributes(),
-                        'product'    => Mage::getModel('catalog/product'),
-                    )
-                );
-            }
+        if ($websiteIds) {
+            $productCollection = clone Mage::getResourceModel('catalog/product_collection');
+            $productCollection->addWebsiteFilter($websiteIds);
+
+            $this->getConditions()->collectValidatedAttributes($productCollection);
+            Mage::getSingleton('core/resource_iterator')->walk(
+                $productCollection->getSelect(),
+                array(array($this, 'callbackValidateProduct')),
+                array(
+                    'attributes' => $this->getCollectedAttributes(),
+                    'product'    => Mage::getModel('catalog/product'),
+                )
+            );
         }
         return $this->_productIds;
     }
