@@ -26,6 +26,16 @@ Installation Instructions
 2. Clear the cache, logout from the admin panel and then login again.
 3. You can now dynamically add products to categories based on attributes.
 
+Usage
+-----
+
+The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" of categories in the backend.
+You can define rules for products to be included in the category. 
+
+If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration.
+
+
+
 Support
 -------
 If you have any issues with this extension, open an issue on [GitHub](https://github.com/firegento/firegento-dynamiccategory/issues).
