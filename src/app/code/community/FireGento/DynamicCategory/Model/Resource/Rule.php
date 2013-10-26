@@ -25,8 +25,7 @@
  * @package  FireGento_DynamicCategory
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_DynamicCategory_Model_Resource_Rule
-    extends Mage_Core_Model_Resource_Db_Abstract
+class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Resource_Db_Abstract
 {
     /**
      * Attribute code for dynamiccategory

@@ -1,0 +1,10 @@
+tables:
+  catalog/category_product:
+    - category_id: 3
+      product_id: 10
+      position: 99
+      dynamic: 1
+    - category_id: 3
+      product_id: 11
+      position: 99
+      dynamic: 1
