@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- 
+<!--
 /**
  * This file is part of the FIREGENTO project.
  *
@@ -40,16 +40,17 @@
         <models>
             <dynamiccategory>
                 <class>FireGento_DynamicCategory_Model</class>
-                <resourceModel>dynamiccategory_mysql4</resourceModel>
+                <resourceModel>dynamiccategory_resource</resourceModel>
             </dynamiccategory>
-            <dynamiccategory_mysql4>
-                <class>FireGento_DynamicCategory_Model_Mysql4</class>
+            <dynamiccategory_resource>
+                <class>FireGento_DynamicCategory_Model_Resource</class>
+                <deprecatedNode>dynamiccategory_mysql4</deprecatedNode>
                 <entities>
                     <rule>
                         <table>dynamiccategory_rule</table>
                     </rule>
                 </entities>
-            </dynamiccategory_mysql4>
+            </dynamiccategory_resource>
         </models>
         <index>
             <indexer>
@@ -62,22 +63,9 @@
             <dynamiccategory_setup>
                 <setup>
                     <module>FireGento_DynamicCategory</module>
-                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
                 </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
             </dynamiccategory_setup>
-            <dynamiccategory_write>
-                <connection>
-                    <use>core_write</use>
-                </connection>
-            </dynamiccategory_write>
-            <dynamiccategory_read>
-                <connection>
-                    <use>core_read</use>
-                </connection>
-            </dynamiccategory_read>
         </resources>
     </global>
     <admin>
