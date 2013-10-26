@@ -71,7 +71,7 @@ You can define rules for products to be included in the category.
 
 If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration (See Catalog > Attributes > YOUR ATTRIBUTE > Edit it).
 
-![Attribute Edit](./doc/images/screenshot-tab-dynamic-products.png)
+![Attribute Edit](./doc/images/attribute-rule-promotion.png)
 
 
 
