@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "html" "">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>FireGento_DynamicCategory - FireGento_DynamicCategory_Model_Rule - API Documentation</title>
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+  <body>
+    <div class="wrapper clearfix">
+      <div class="topbar clearfix">
+        <h1>
+          <a class="brand" href="../index.xhtml">FireGento_DynamicCategory - API Documentation</a>
+        </h1>
+        <ul class="nav">
+          <li class="active">
+            <a href="../index.xhtml">Overview</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navigation">
+        <h3>Methods</h3>
+        <ul>
+          <li>
+            <a href="#_construct">_construct</a>
+          </li>
+          <li>
+            <a href="#callbackValidateProduct">callbackValidateProduct</a>
+          </li>
+          <li>
+            <a href="#getConditionsInstance">getConditionsInstance</a>
+          </li>
+          <li>
+            <a href="#getMatchingProductIds">getMatchingProductIds</a>
+          </li>
+          <li>
+            <a href="#loadPost">loadPost</a>
+          </li>
+          <li>
+            <a href="#rebuildIndex">rebuildIndex</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <h2><span style="font-size:60%">\</span>FireGento_DynamicCategory_Model_Rule</h2>
+        <div class="file-notice">
+          <p>Model for rule conditions.</p>
+        </div>
+        <ul class="fileinfos">
+          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
+        </ul>
+        <h3>Methods</h3>
+        <ul class="varlist">
+          <li>
+            <a name="callbackValidateProduct"/>
+            <h4><span class="label public">public</span>callbackValidateProduct<span style="font-size:90%;">( <span class="param-type">array</span><strong> $args</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Callback function for product matching</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$args</code> - Arguments</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="getConditionsInstance"/>
+            <h4><span class="label public">public</span>getConditionsInstance<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Gets an instance of the respective conditions model</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Condition Instance</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="getMatchingProductIds"/>
+            <h4><span class="label public">public</span>getMatchingProductIds<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Get array of product ids which are matched by rule</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Matching product IDs</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="loadPost"/>
+            <h4><span class="label public">public</span>loadPost<span style="font-size:90%;">( <span class="param-type">Array</span><strong> $rule</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Initialize the rule model data from the given array.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$rule</code> - Rule data</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Self.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="rebuildIndex"/>
+            <h4><span class="label public">public</span>rebuildIndex<span style="font-size:90%;">( <span class="param-type">int</span><strong> $storeId</strong>, <span class="param-type"><span title="int|array">int|array</span></span><strong> $categoryIds</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Regenerate all Stores index<pre>Examples:
+(null, null) =&gt; Regenerate index for all stores
+(1, null)    =&gt; Regenerate index for store=1
+(1, 2)       =&gt; Regenerate index for category2 and its store=1
+(null, 2)    =&gt; Regenerate index for all stores of category=2</pre></li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$storeId</code> - Store View ID to reindex</li>
+                <li><code>$categoryIds</code> - Category IDs to reindex</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Self.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="_construct"/>
+            <h4><span class="label protected">protected</span>_construct<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Init the resource model</li>
+            </p>
+          </li>
+        </ul>
+        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
+      </div>
+    </div>
+  </body>
+</html>

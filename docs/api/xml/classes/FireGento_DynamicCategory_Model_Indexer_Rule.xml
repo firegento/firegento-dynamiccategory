@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Model_Indexer_Rule" namespace="" name="FireGento_DynamicCategory_Model_Indexer_Rule" abstract="false" final="false" start="28" end="182">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Indexer" file="Rule.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Indexer/Rule.php" size="5736" time="2013-10-26T15:49:40+02:00" unixtime="1382795380" sha1="553dfdd70922b4fd8ec5a2fe82474863d3cf5348"/>
+  <docblock>
+    <description compact="Indexer model for the dynamic category rules"/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Index_Model_Indexer_Abstract" namespace="" name="Mage_Index_Model_Indexer_Abstract"/>
+  <member name="_matchedEntities" type="array" visibility="protected">
+    <docblock>
+      <description compact="Indexer must be match entities"/>
+      <var description="Index Entities" type="array"/>
+    </docblock>
+  </member>
+  <member name="_relatedConfigSettings" type="array" visibility="protected">
+    <docblock>
+      <description compact="Related Configuration Settings for match"/>
+      <var description="Config Settings" type="array"/>
+    </docblock>
+  </member>
+  <method name="_getIndexer" start="58" end="61" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Retrieve Dynamic Category Rule Indexer instance"/>
+      <return description="Indexer Model" type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule" namespace="" name="FireGento_DynamicCategory_Model_Rule"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getName" start="68" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve Indexer name"/>
+      <return description="Indexer name" type="string"/>
+    </docblock>
+  </method>
+  <method name="getDescription" start="78" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve Indexer description"/>
+      <return description="Indexer description" type="string"/>
+    </docblock>
+  </method>
+  <method name="_registerEvent" start="88" end="99" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Register data required by process in event object"/>
+      <param description="Index Event Model" type="object" variable="$event">
+        <type full="Mage_Index_Model_Event" namespace="" name="Mage_Index_Model_Event"/>
+      </param>
+    </docblock>
+    <parameter name="event" byreference="false" type="object">
+      <type full="\\Mage_Index_Model_Event" namespace="\" name="Mage_Index_Model_Event"/>
+    </parameter>
+  </method>
+  <method name="_registerCatalogCategoryEvent" start="107" end="118" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Register data required by catalog category process in event object"/>
+      <param description="Index Event Model" type="object" variable="$event">
+        <type full="Mage_Index_Model_Event" namespace="" name="Mage_Index_Model_Event"/>
+      </param>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Indexer_Rule" namespace="" name="FireGento_DynamicCategory_Model_Indexer_Rule"/>
+      </return>
+    </docblock>
+    <parameter name="event" byreference="false" type="object">
+      <type full="\\Mage_Index_Model_Event" namespace="\" name="Mage_Index_Model_Event"/>
+    </parameter>
+  </method>
+  <method name="_registerCatalogProductEvent" start="126" end="160" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Register data required by catatalog product process in event object"/>
+      <param description="Index Event Model" type="object" variable="$event">
+        <type full="Mage_Index_Model_Event" namespace="" name="Mage_Index_Model_Event"/>
+      </param>
+      <return type="object">
+        <type full="FireGento_DynamicCategory_Model_Indexer_Rule" namespace="" name="FireGento_DynamicCategory_Model_Indexer_Rule"/>
+      </return>
+    </docblock>
+    <parameter name="event" byreference="false" type="object">
+      <type full="\\Mage_Index_Model_Event" namespace="\" name="Mage_Index_Model_Event"/>
+    </parameter>
+  </method>
+  <method name="_processEvent" start="167" end="173" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Process event"/>
+      <param description="Index Event Model" type="object" variable="$event">
+        <type full="Mage_Index_Model_Event" namespace="" name="Mage_Index_Model_Event"/>
+      </param>
+    </docblock>
+    <parameter name="event" byreference="false" type="object">
+      <type full="\\Mage_Index_Model_Event" namespace="\" name="Mage_Index_Model_Event"/>
+    </parameter>
+  </method>
+  <method name="reindexAll" start="178" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Rebuild all index data"/>
+    </docblock>
+  </method>
+</class>

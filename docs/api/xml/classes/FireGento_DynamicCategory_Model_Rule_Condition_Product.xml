@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Model_Rule_Condition_Product" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Product" abstract="false" final="false" start="28" end="424">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Rule/Condition" file="Product.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Rule/Condition/Product.php" size="13272" time="2013-10-26T16:40:58+02:00" unixtime="1382798458" sha1="f43ab498c11e12852fc6611460b4ea2a7e544db7"/>
+  <docblock>
+    <description compact="Product Condition Class"/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Rule_Model_Condition_Abstract" namespace="" name="Mage_Rule_Model_Condition_Abstract"/>
+  <member name="_entityAttributeValues" type="{unknown}" default="null" visibility="protected">
+    <docblock>
+      <description compact="All attribute values as array in form: array(   [entity_id_1] =&gt; array(          [store_id_1] =&gt; store_value_1,          [store_id_2] =&gt; store_value_2,          ...">[store_id_n] =&gt; store_value_n
+  ),
+  ...
+)
+
+Will be set only for not global scope attribute</description>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <method name="getAttributeObject" start="54" end="64" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve attribute object"/>
+      <return type="object">
+        <type full="Varien_Object|Mage_Eav_Model_Entity_Attribute_Abstract" namespace="" name="Varien_Object|Mage_Eav_Model_Entity_Attribute_Abstract"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_addSpecialAttributes" start="71" end="75" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Add some special attributes to the attribute list"/>
+      <param description="Attributes" type="array" variable="&amp;$attributes"/>
+    </docblock>
+    <parameter name="attributes" byreference="true" type="array"/>
+  </method>
+  <method name="loadAttributeOptions" start="82" end="100" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Load attribute options"/>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule_Condition_Product" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Product"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getValueOption" start="108" end="140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve value by option"/>
+      <param description="Current Option" type="mixed" variable="$option"/>
+      <return description="Value of an Option" type="string"/>
+    </docblock>
+    <parameter name="option" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="getValueSelectOptions" start="147" end="171" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve select option values"/>
+      <return description="Select Options" type="array"/>
+    </docblock>
+  </method>
+  <method name="getValueAfterElementHtml" start="178" end="196" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve after element HTML"/>
+      <return description="Element HTML" type="string"/>
+    </docblock>
+  </method>
+  <method name="getAttributeElement" start="203" end="209" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve attribute element"/>
+      <return description="Element" type="object">
+        <type full="Varien_Form_Element_Abstract" namespace="" name="Varien_Form_Element_Abstract"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="collectValidatedAttributes" start="217" end="232" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Collect validated attributes"/>
+      <param description="Product Collection" type="object" variable="$productCollection">
+        <type full="Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection" namespace="" name="Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection"/>
+      </param>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule_Condition_Product" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Product"/>
+      </return>
+    </docblock>
+    <parameter name="productCollection" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getInputType" start="239" end="265" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve input type"/>
+      <return description="Input Type" type="string"/>
+    </docblock>
+  </method>
+  <method name="getValueElementType" start="272" end="298" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve value element type"/>
+      <return description="Element Type" type="string"/>
+    </docblock>
+  </method>
+  <method name="getValueElement" start="305" end="317" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve value element"/>
+      <return description="Element" type="object">
+        <type full="Varien_Data_Form_Element_Abstract" namespace="" name="Varien_Data_Form_Element_Abstract"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getExplicitApply" start="324" end="344" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve Explicit Apply"/>
+      <return description="True/False" type="boolean"/>
+    </docblock>
+  </method>
+  <method name="loadArray" start="352" end="372" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Load array"/>
+      <param description="Attribute Array" type="array" variable="$arr"/>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule_Condition_Product" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Product"/>
+      </return>
+    </docblock>
+    <parameter name="arr" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="validate" start="380" end="423" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Validate product attrbute value for condition"/>
+      <param description="Object" type="object" variable="$object">
+        <type full="Varien_Object" namespace="" name="Varien_Object"/>
+      </param>
+      <return description="True/False" type="boolean"/>
+    </docblock>
+    <parameter name="object" byreference="false" type="object">
+      <type full="\\Varien_Object" namespace="\" name="Varien_Object"/>
+    </parameter>
+  </method>
+</class>

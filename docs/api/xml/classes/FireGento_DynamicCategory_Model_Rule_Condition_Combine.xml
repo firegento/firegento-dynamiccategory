@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Model_Rule_Condition_Combine" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Combine" abstract="false" final="false" start="28" end="66">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Rule/Condition" file="Combine.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Rule/Condition/Combine.php" size="2026" time="2013-10-26T16:27:43+02:00" unixtime="1382797663" sha1="4fa033aad5966b07d52dccbaa4820ce895b6e69f"/>
+  <docblock>
+    <description compact="Combine Condition Class"/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_CatalogRule_Model_Rule_Condition_Combine" namespace="" name="Mage_CatalogRule_Model_Rule_Condition_Combine"/>
+  <method name="loadAggregatorOptions" start="37" end="47" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the aggregator options"/>
+      <see value="Mage_Rule_Model_Condition_Combine::loadAggregatorOptions()"/>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule_Condition_Combine" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Combine"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="loadValueOptions" start="55" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the value options"/>
+      <see value="Mage_Rule_Model_Condition_Combine::loadValueOptions()"/>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule_Condition_Combine" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Combine"/>
+      </return>
+    </docblock>
+  </method>
+</class>

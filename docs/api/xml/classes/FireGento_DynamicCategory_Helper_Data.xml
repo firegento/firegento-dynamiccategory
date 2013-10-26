@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Helper_Data" namespace="" name="FireGento_DynamicCategory_Helper_Data" abstract="false" final="false" start="28" end="31">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Helper" file="Data.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Helper/Data.php" size="1052" time="2013-10-26T14:42:42+02:00" unixtime="1382791362" sha1="1a437d8a82630fce9b964321b6b313621fda571d"/>
+  <docblock>
+    <description compact="Helper class for translations, etc."/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Core_Helper_Abstract" namespace="" name="Mage_Core_Helper_Abstract"/>
+</class>

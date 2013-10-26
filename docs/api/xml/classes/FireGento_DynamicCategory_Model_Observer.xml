@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Model_Observer" namespace="" name="FireGento_DynamicCategory_Model_Observer" abstract="false" final="false" start="29" end="172">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model" file="Observer.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Observer.php" size="5953" time="2013-10-26T15:28:31+02:00" unixtime="1382794111" sha1="0722b73624d3106d7632767efcab59760035e4ae"/>
+  <docblock>
+    <description compact="Observer Model for adding the block to the category products view and observing the category save."/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <method name="adminhtmlCatalogCategoryTabs" start="36" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Append a custom block to the category.product.grid block."/>
+      <param description="Observer Instance" type="object" variable="$observer">
+        <type full="Varien_Event_Observer" namespace="" name="Varien_Event_Observer"/>
+      </param>
+    </docblock>
+    <parameter name="observer" byreference="false" type="object">
+      <type full="\\Varien_Event_Observer" namespace="\" name="Varien_Event_Observer"/>
+    </parameter>
+  </method>
+  <method name="adminhtmlBlockHtmlBefore" start="70" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Prepare the adminhtml category products view"/>
+      <param description="Observer Instance" type="object" variable="$observer">
+        <type full="Varien_Event_Observer" namespace="" name="Varien_Event_Observer"/>
+      </param>
+    </docblock>
+    <parameter name="observer" byreference="false" type="object">
+      <type full="\\Varien_Event_Observer" namespace="\" name="Varien_Event_Observer"/>
+    </parameter>
+  </method>
+  <method name="decorateType" start="101" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Decorate Type column values"/>
+      <param description="Column value" type="mixed" variable="$value"/>
+      <param description="Current Row" type="object" variable="$row">
+        <type full="Varien_Object" namespace="" name="Varien_Object"/>
+      </param>
+      <param description="Current Column" type="object" variable="$column">
+        <type full="Varien_Object" namespace="" name="Varien_Object"/>
+      </param>
+      <return description="Decorated field" type="string"/>
+    </docblock>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="row" byreference="false" type="{unknown}"/>
+    <parameter name="column" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="catalogCategoryPrepareSave" start="126" end="141" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Observe the category save."/>
+      <param description="Observer Instance" type="object" variable="$observer">
+        <type full="Varien_Event_Observer" namespace="" name="Varien_Event_Observer"/>
+      </param>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Observer" namespace="" name="FireGento_DynamicCategory_Model_Observer"/>
+      </return>
+    </docblock>
+    <parameter name="observer" byreference="false" type="object">
+      <type full="\\Varien_Event_Observer" namespace="\" name="Varien_Event_Observer"/>
+    </parameter>
+  </method>
+  <method name="_filterDates" start="150" end="171" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Convert dates in array from localized to internal format"/>
+      <param description="Post data" type="array" variable="$array"/>
+      <param description="Date fields" type="array" variable="$dateFields"/>
+      <return description="Filtered dates" type="array"/>
+    </docblock>
+    <parameter name="array" byreference="false" type="{unknown}"/>
+    <parameter name="dateFields" byreference="false" type="{unknown}"/>
+  </method>
+</class>

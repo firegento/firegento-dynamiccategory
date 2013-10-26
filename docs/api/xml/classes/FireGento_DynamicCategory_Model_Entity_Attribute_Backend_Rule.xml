@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule" namespace="" name="FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule" abstract="false" final="false" start="28" end="62">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Entity/Attribute/Backend" file="Rule.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Entity/Attribute/Backend/Rule.php" size="1973" time="2013-10-26T14:44:34+02:00" unixtime="1382791474" sha1="8be8efe8d57fddc0d4d560258f4dfc35a3236f36"/>
+  <docblock>
+    <description compact="Rule Backend Model for the attribute"/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Eav_Model_Entity_Attribute_Backend_Abstract" namespace="" name="Mage_Eav_Model_Entity_Attribute_Backend_Abstract"/>
+  <method name="afterLoad" start="37" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="After load method"/>
+      <param description="Object Model" type="object" variable="$object">
+        <type full="Varien_Object" namespace="" name="Varien_Object"/>
+      </param>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule" namespace="" name="FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule"/>
+      </return>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="beforeSave" start="53" end="61" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Before save method"/>
+      <param description="Object Model" type="object" variable="$object">
+        <type full="Varien_Object" namespace="" name="Varien_Object"/>
+      </param>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule" namespace="" name="FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule"/>
+      </return>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+  </method>
+</class>
