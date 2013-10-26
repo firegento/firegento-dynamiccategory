@@ -1,0 +1,6 @@
+testSaveCategories:
+  productIds:
+    - 10
+    - 11
+    - 12
+  categoryId: 4

@@ -1,0 +1,135 @@
+eav:
+  catalog_category:
+    - entity_id: 1
+      name: Root
+      url_key: test-category
+      entity_type_id: 3
+      attribute_set_id: 3
+      parent_id: 0
+      path: 1
+      level: 0
+      position: 0
+      is_active: 1
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00
+
+    - entity_id: 2
+      name: Website Category
+      url_key: website-category
+      entity_type_id: 3
+      attribute_set_id: 3
+      parent_id: 1
+      path: 1/2
+      level: 1
+      position: 1
+      children_count: 3
+      is_active: 1
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00
+
+    - entity_id: 3
+      name: Test Category 1
+      url_key: test-category-1
+      entity_type_id: 3
+      attribute_set_id: 3
+      parent_id: 2
+      path: 1/2/3
+      level: 2
+      position: 1
+      children_count: 0
+      is_active: 1
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00
+
+    - entity_id: 4
+      name: Test Category 2
+      url_key: test-category-2
+      entity_type_id: 3
+      attribute_set_id: 3
+      parent_id: 2
+      path: 1/2/4
+      level: 2
+      position: 1
+      children_count: 0
+      is_active: 1
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00
+
+    - entity_id: 5
+      name: Test Category 3
+      url_key: test-category-3
+      entity_type_id: 3
+      attribute_set_id: 3
+      parent_id: 2
+      path: 1/2/4/5
+      level: 3
+      position: 1
+      children_count: 0
+      is_active: 1
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00
+
+  catalog_product:
+    - entity_id: 10
+      sku: test-product-1
+      name: Test Product 1
+      url_key: test-product-1
+      type_id: simple
+      price: 199.99
+      visibility: 4
+      status: 1
+      stock:
+        qty: 1000
+        is_in_stock: 1
+      website_ids:
+        - base
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00
+
+    - entity_id: 11
+      sku: test-product-2
+      name: Test Product 2
+      url_key: test-product-2
+      type_id: simple
+      price: 299.99
+      visibility: 3
+      status: 1
+      stock:
+        qty: 1000
+        is_in_stock: 1
+      website_ids:
+        - base
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00
+
+    - entity_id: 12
+      sku: test-product-2
+      name: Test Product 2
+      url_key: test-product-2
+      type_id: simple
+      price: 19.99
+      visibility: 3
+      status: 1
+      stock:
+        qty: 1000
+        is_in_stock: 1
+      website_ids:
+        - base
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00
+
+    - entity_id: 13
+      sku: test-product-3
+      name: Test Product 3
+      url_key: test-product-3
+      type_id: simple
+      price: 49.99
+      visibility: 3
+      status: 1
+      stock:
+        qty: 1000
+        is_in_stock: 1
+      website_ids:
+        - base
+      created_at: 2013-10-26 12:00:00
+      updated_at: 2013-10-26 13:00:00

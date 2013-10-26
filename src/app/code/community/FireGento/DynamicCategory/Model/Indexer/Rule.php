@@ -55,7 +55,7 @@ class FireGento_DynamicCategory_Model_Indexer_Rule
      *
      * @return FireGento_DynamicCategory_Model_Rule Indexer Model
      */
-    protected function _getIndexer()
+    public function getIndexer()
     {
         return Mage::getSingleton('dynamiccategory/rule');
     }
@@ -168,7 +168,7 @@ class FireGento_DynamicCategory_Model_Indexer_Rule
     {
         $data = $event->getNewData();
         if (!empty($data['dynamiccategory_save_category_id'])) {
-            $this->_getIndexer()->rebuildIndex(null, $data['dynamiccategory_save_category_id']);
+            $this->getIndexer()->rebuildIndex(null, $data['dynamiccategory_save_category_id']);
         }
     }
 
@@ -177,6 +177,6 @@ class FireGento_DynamicCategory_Model_Indexer_Rule
      */
     public function reindexAll()
     {
-        $this->_getIndexer()->rebuildIndex();
+        $this->getIndexer()->rebuildIndex();
     }
 }

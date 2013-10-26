@@ -1,4 +1,4 @@
-<?php
+w<?php
 /**
  * This file is part of a FireGento e.V. module.
  *

@@ -25,6 +25,7 @@
             <codePool>community</codePool>
             <depends>
                 <Mage_Adminhtml />
+                <Mage_Index />
                 <Mage_Rule />
                 <Mage_CatalogRule />
             </depends>
