@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Block_Conditions" namespace="" name="FireGento_DynamicCategory_Block_Conditions" abstract="false" final="false" start="28" end="45">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Block" file="Conditions.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Block/Conditions.php" size="1529" time="2013-10-26T14:41:23+02:00" unixtime="1382791283" sha1="8821324125f219712eb606623ed316e96910647a"/>
+  <docblock>
+    <description compact="Renderer for the conditions"/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <implements full="Varien_Data_Form_Element_Renderer_Interface" namespace="" name="Varien_Data_Form_Element_Renderer_Interface"/>
+  <method name="render" start="37" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Renders the conditions and returns the condition as html."/>
+      <param description="Element" type="object" variable="$element">
+        <type full="Varien_Data_Form_Element_Abstract" namespace="" name="Varien_Data_Form_Element_Abstract"/>
+      </param>
+      <return description="Element as html" type="string"/>
+    </docblock>
+    <parameter name="element" byreference="false" type="object">
+      <type full="\\Varien_Data_Form_Element_Abstract" namespace="\" name="Varien_Data_Form_Element_Abstract"/>
+    </parameter>
+  </method>
+</class>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<source xmlns="http://xml.phpdox.de/src#">
+  <dir name="src">
+    <dir name="app">
+      <dir name="code">
+        <dir name="community">
+          <dir name="FireGento">
+            <dir name="DynamicCategory">
+              <dir name="Block">
+                <dir name="Adminhtml">
+                  <dir name="Category">
+                    <file name="Dynamic.php" size="3187" time="2013-10-26T14:40:29+02:00" unixtime="1382791229" sha1="f303f493cba1356723256ebde44d583c5f456f3f"/>
+                  </dir>
+                </dir>
+                <file name="Conditions.php" size="1529" time="2013-10-26T14:41:23+02:00" unixtime="1382791283" sha1="8821324125f219712eb606623ed316e96910647a"/>
+              </dir>
+              <dir name="controllers">
+                <file name="DynamicController.php" size="1999" time="2013-10-26T14:42:09+02:00" unixtime="1382791329" sha1="afc035803a89e2f411ee571301f228654cb611f0"/>
+              </dir>
+              <dir name="Helper">
+                <file name="Data.php" size="1052" time="2013-10-26T14:42:42+02:00" unixtime="1382791362" sha1="1a437d8a82630fce9b964321b6b313621fda571d"/>
+              </dir>
+              <dir name="Model">
+                <dir name="Entity">
+                  <dir name="Attribute">
+                    <dir name="Backend">
+                      <file name="Rule.php" size="1973" time="2013-10-26T14:44:34+02:00" unixtime="1382791474" sha1="8be8efe8d57fddc0d4d560258f4dfc35a3236f36"/>
+                    </dir>
+                  </dir>
+                </dir>
+                <dir name="Indexer">
+                  <file name="Rule.php" size="5736" time="2013-10-26T15:49:40+02:00" unixtime="1382795380" sha1="553dfdd70922b4fd8ec5a2fe82474863d3cf5348"/>
+                </dir>
+                <dir name="Mysql4">
+                  <file name="Rule.php" size="1105" time="2013-10-26T16:36:40+02:00" unixtime="1382798200" sha1="abfe0a27cbfab11ae83beee97e7b75634bba8f01"/>
+                </dir>
+                <file name="Observer.php" size="5953" time="2013-10-26T15:28:31+02:00" unixtime="1382794111" sha1="0722b73624d3106d7632767efcab59760035e4ae"/>
+                <dir name="Resource">
+                  <file name="Rule.php" size="6554" time="2013-10-26T15:41:09+02:00" unixtime="1382794869" sha1="5f0722c955e336f797cf68603db2bff91e1c3dab"/>
+                </dir>
+                <dir name="Rule">
+                  <dir name="Condition">
+                    <file name="Combine.php" size="2026" time="2013-10-26T16:27:43+02:00" unixtime="1382797663" sha1="4fa033aad5966b07d52dccbaa4820ce895b6e69f"/>
+                    <dir name="Product">
+                      <file name="Combine.php" size="2930" time="2013-10-26T16:10:31+02:00" unixtime="1382796631" sha1="3d3c4646596996a6e7db00098ca06a11af19df64"/>
+                      <file name="Found.php" size="2495" time="2013-10-26T16:26:10+02:00" unixtime="1382797570" sha1="6f3dbf24dec7b0886cde9c42e1f441e2b7600d84"/>
+                    </dir>
+                    <file name="Product.php" size="13272" time="2013-10-26T16:40:58+02:00" unixtime="1382798458" sha1="f43ab498c11e12852fc6611460b4ea2a7e544db7"/>
+                  </dir>
+                </dir>
+                <file name="Rule.php" size="4454" time="2013-10-26T16:40:40+02:00" unixtime="1382798440" sha1="554f73246b13ec876926dfd188f7d57f87e456cf"/>
+              </dir>
+              <dir name="sql">
+                <dir name="dynamiccategory_setup">
+                  <file name="mysql4-install-0.2.3.php" size="1406" time="2013-10-26T15:52:09+02:00" unixtime="1382795529" sha1="779c379c7db67078b6e241c39e2b578975d4f34e"/>
+                  <file name="mysql4-install-1.0.0.php" size="1907" time="2013-10-26T15:52:21+02:00" unixtime="1382795541" sha1="a06a99f3762d1c120942c74fedc46ee016e5b4f3"/>
+                </dir>
+              </dir>
+            </dir>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </dir>
+</source>

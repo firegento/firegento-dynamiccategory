@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,21 +15,15 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.1
  */
 /**
- * Condition Class for Product Attributes and Products
+ * Product Condition Class
  *
- * @category  FireGento
- * @package   FireGento_DynamicCategory
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.1
+ * @category FireGento
+ * @package  FireGento_DynamicCategory
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_DynamicCategory_Model_Rule_Condition_Product
     extends Mage_Rule_Model_Condition_Abstract
@@ -55,30 +49,29 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
     /**
      * Retrieve attribute object
      *
-     * @return FireGento_DynamicCategory_Model_Rule_Condition_Product Self.
+     * @return Varien_Object|Mage_Eav_Model_Entity_Attribute_Abstract
      */
     public function getAttributeObject()
     {
         try {
             $obj = Mage::getSingleton('eav/config')->getAttribute('catalog_product', $this->getAttribute());
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             $obj = new Varien_Object();
             $obj->setEntity(Mage::getResourceSingleton('catalog/product'))->setFrontendInput('text');
         }
+
         return $obj;
     }
 
     /**
-     * Add special attributes
+     * Add some special attributes to the attribute list
      *
      * @param array &$attributes Attributes
-     * @return void
      */
     protected function _addSpecialAttributes(array &$attributes)
     {
         $attributes['attribute_set_id'] = Mage::helper('dynamiccategory')->__('Attribute Set');
-        $attributes['category_ids']     = Mage::helper('dynamiccategory')->__('Category');
+        $attributes['category_ids'] = Mage::helper('dynamiccategory')->__('Category');
     }
 
     /**
@@ -88,35 +81,41 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     public function loadAttributeOptions()
     {
-        $productAttributes = Mage::getResourceSingleton('catalog/product')->loadAllAttributes()->getAttributesByCode();
+        $productAttributes = Mage::getResourceSingleton('catalog/product')
+            ->loadAllAttributes()
+            ->getAttributesByCode();
+
         $attributes = array();
         foreach ($productAttributes as $attribute) {
             if ($attribute->getData('is_visible')) {
                 $attributes[$attribute->getAttributeCode()] = $attribute->getFrontendLabel();
             }
         }
+
         $this->_addSpecialAttributes($attributes);
         asort($attributes);
         $this->setAttributeOption($attributes);
+
         return $this;
     }
 
     /**
      * Retrieve value by option
      *
-     * @param mixed $option
+     * @param  mixed $option Current Option
      * @return string Value of an Option
      */
     public function getValueOption($option=null)
     {
         if (!$this->getData('value_option')) {
-            if ($this->getAttribute()==='attribute_set_id') {
+            if ($this->getAttribute() === 'attribute_set_id') {
                 $entityTypeId = Mage::getSingleton('eav/config')->getEntityType('catalog_product')->getId();
 
                 $options = Mage::getResourceModel('eav/entity_attribute_set_collection')
                     ->setEntityTypeFilter($entityTypeId)
                     ->load()
                     ->toOptionHash();
+
                 $this->setData('value_option', $options);
             } elseif (is_object($this->getAttributeObject()) && $this->getAttributeObject()->usesSource()) {
                 if ($this->getAttributeObject()->getFrontendInput() == 'multiselect') {
@@ -128,15 +127,15 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
                 $optionsArr = $this->getAttributeObject()->getSource()->getAllOptions($addEmptyOption);
                 $options = array();
                 foreach ($optionsArr as $o) {
-                    if (is_array($o['value'])) {
-                        // Do nothing
-                    } else {
+                    if (!is_array($o['value'])) {
                         $options[$o['value']] = $o['label'];
                     }
                 }
+
                 $this->setData('value_option', $options);
             }
         }
+
         return $this->getData('value_option'.(!is_null($option) ? '/'.$option : ''));
     }
 
@@ -148,12 +147,13 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
     public function getValueSelectOptions()
     {
         if (!$this->getData('value_select_options')) {
-            if ($this->getAttribute()==='attribute_set_id') {
-                $entityTypeId = Mage::getSingleton('eav/config')
-                    ->getEntityType('catalog_product')->getId();
+            if ($this->getAttribute() === 'attribute_set_id') {
+                $entityTypeId = Mage::getSingleton('eav/config')->getEntityType('catalog_product')->getId();
+
                 $options = Mage::getResourceModel('eav/entity_attribute_set_collection')
                     ->setEntityTypeFilter($entityTypeId)
                     ->load()->toOptionArray();
+
                 $this->setData('value_select_options', $options);
             } elseif (is_object($this->getAttributeObject()) && $this->getAttributeObject()->usesSource()) {
                 if ($this->getAttributeObject()->getFrontendInput() == 'multiselect') {
@@ -161,10 +161,12 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
                 } else {
                     $addEmptyOption = true;
                 }
+
                 $optionsArr = $this->getAttributeObject()->getSource()->getAllOptions($addEmptyOption);
                 $this->setData('value_select_options', $optionsArr);
             }
         }
+
         return $this->getData('value_select_options');
     }
 
@@ -178,7 +180,8 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
         $html = '';
 
         switch ($this->getAttribute()) {
-            case 'sku': case 'category_ids':
+            case 'sku':
+            case 'category_ids':
                 $image = Mage::getDesign()->getSkinUrl('images/rule_chooser_trigger.gif');
                 break;
         }
@@ -188,6 +191,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
                 <img src="' . $image . '" alt="" class="v-middle rule-chooser-trigger"
                 title="' . Mage::helper('rule')->__('Open Chooser') . '" /></a>';
         }
+
         return $html;
     }
 
@@ -200,19 +204,18 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
     {
         $element = parent::getAttributeElement();
         $element->setShowAsText(true);
+
         return $element;
     }
 
     /**
      * Collect validated attributes
      *
-     * @param Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection $productCollection Collection
-     *
+     * @param  Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection $productCollection Product Collection
      * @return FireGento_DynamicCategory_Model_Rule_Condition_Product Self.
      */
     public function collectValidatedAttributes($productCollection)
     {
-        Mage::log(get_class($productCollection));
         $attribute = $this->getAttribute();
         if ('category_ids' != $attribute) {
             if ($this->getAttributeObject()->isScopeGlobal()) {
@@ -309,6 +312,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
                     break;
             }
         }
+
         return $element;
     }
 
@@ -342,7 +346,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
     /**
      * Load array
      *
-     * @param array $arr Attribute Array
+     * @param  array $arr Attribute Array
      * @return FireGento_DynamicCategory_Model_Rule_Condition_Product Self.
      */
     public function loadArray($arr)
@@ -370,7 +374,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
     /**
      * Validate product attrbute value for condition
      *
-     * @param Varien_Object $object Object
+     * @param  Varien_Object $object Object
      * @return boolean True/False
      */
     public function validate(Varien_Object $object)
@@ -402,14 +406,13 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
             foreach ($this->_entityAttributeValues[$object->getId()] as $storeId => $value) {
                 $object->setData($attrCode, $value);
 
-                $result |= parent::validate($object);
-
+                $result = parent::validate($object);
                 if ($result) {
                     break;
                 }
             }
 
-            if (is_null($oldAttrValue)) {
+            if (null === $oldAttrValue) {
                 $object->unsetData($attrCode);
             } else {
                 $object->setData($attrCode, $oldAttrValue);

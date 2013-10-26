@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_DynamicController" namespace="" name="FireGento_DynamicCategory_DynamicController" abstract="false" final="false" start="28" end="61">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/controllers" file="DynamicController.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/controllers/DynamicController.php" size="1999" time="2013-10-26T14:42:09+02:00" unixtime="1382791329" sha1="afc035803a89e2f411ee571301f228654cb611f0"/>
+  <docblock>
+    <description compact="Controller for AJAX requests."/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Controller_Action" namespace="" name="Mage_Adminhtml_Controller_Action"/>
+  <method name="newConditionHtmlAction" start="36" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the html code for a new condition in the resonse."/>
+      <todo value="Implement own model logic"/>
+    </docblock>
+  </method>
+</class>

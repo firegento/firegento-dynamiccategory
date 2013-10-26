@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic" namespace="" name="FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic" abstract="false" final="false" start="28" end="98">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Block/Adminhtml/Category" file="Dynamic.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Block/Adminhtml/Category/Dynamic.php" size="3187" time="2013-10-26T14:40:29+02:00" unixtime="1382791229" sha1="f303f493cba1356723256ebde44d583c5f456f3f"/>
+  <docblock>
+    <description compact="Condition block for category edit page"/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Block_Widget_Form" namespace="" name="Mage_Adminhtml_Block_Widget_Form"/>
+  <member name="_category" type="{unknown}" visibility="protected">
+    <docblock>
+      <description compact="Category Model"/>
+      <var description="Category" type="object">
+        <type full="Mage_Catalog_Model_Category" namespace="" name="Mage_Catalog_Model_Category"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="getCategory" start="43" end="50" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the current selected category in the admin view."/>
+      <return description="Category" type="object">
+        <type full="Mage_Catalog_Model_Category" namespace="" name="Mage_Catalog_Model_Category"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_prepareLayout" start="57" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates the form for the condition based selection of product attributes."/>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic" namespace="" name="FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic"/>
+      </return>
+    </docblock>
+  </method>
+</class>

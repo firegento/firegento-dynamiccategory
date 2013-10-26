@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<!-- 
+<!--
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -11,13 +11,11 @@
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- *
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
  */
  -->
 <config>
@@ -40,16 +38,17 @@
         <models>
             <dynamiccategory>
                 <class>FireGento_DynamicCategory_Model</class>
-                <resourceModel>dynamiccategory_mysql4</resourceModel>
+                <resourceModel>dynamiccategory_resource</resourceModel>
             </dynamiccategory>
-            <dynamiccategory_mysql4>
-                <class>FireGento_DynamicCategory_Model_Mysql4</class>
+            <dynamiccategory_resource>
+                <class>FireGento_DynamicCategory_Model_Resource</class>
+                <deprecatedNode>dynamiccategory_mysql4</deprecatedNode>
                 <entities>
                     <rule>
                         <table>dynamiccategory_rule</table>
                     </rule>
                 </entities>
-            </dynamiccategory_mysql4>
+            </dynamiccategory_resource>
         </models>
         <index>
             <indexer>
@@ -62,22 +61,9 @@
             <dynamiccategory_setup>
                 <setup>
                     <module>FireGento_DynamicCategory</module>
-                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
                 </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
             </dynamiccategory_setup>
-            <dynamiccategory_write>
-                <connection>
-                    <use>core_write</use>
-                </connection>
-            </dynamiccategory_write>
-            <dynamiccategory_read>
-                <connection>
-                    <use>core_read</use>
-                </connection>
-            </dynamiccategory_read>
         </resources>
     </global>
     <admin>
