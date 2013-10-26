@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,29 +15,21 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
  */
 /**
- * Product Attribute Condition Class
+ * Product Found Rules Condition Class
  *
- * @category  FireGento
- * @package   FireGento_DynamicCategory
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
+ * @category FireGento
+ * @package  FireGento_DynamicCategory
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_DynamicCategory_Model_Rule_Condition_Product_Found
     extends FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine
 {
     /**
-     * Class Constructor
-     *
-     * @return void
+     * Init the product found conditions and set the custom type
      */
     public function __construct()
     {
@@ -59,6 +51,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Found
                 //0 => Mage::helper('dynamiccategory')->__('NOT FOUND'),
             )
         );
+
         return $this;
     }
 
@@ -73,13 +66,15 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Found
     {
         $html = $this->getTypeElement()->getHtml();
         $html .= Mage::helper('dynamiccategory')->__(
-            "If an product is %s in the catalog with %s of these conditions true:",
+            'If an product is %s in the catalog with %s of these conditions true:',
             $this->getValueElement()->getHtml(),
             $this->getAggregatorElement()->getHtml()
         );
-        if ($this->getId()!='1') {
+
+        if ($this->getId() != '1') {
             $html.= $this->getRemoveLinkHtml();
         }
+
         return $html;
     }
 }

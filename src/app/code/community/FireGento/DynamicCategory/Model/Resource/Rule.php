@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,21 +15,15 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
  */
 /**
- * Rules for Conditions
+ * Resource model for rule conditions.
  *
- * @category  FireGento
- * @package   FireGento_DynamicCategory
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.3
+ * @category FireGento
+ * @package  FireGento_DynamicCategory
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Resource_Db_Abstract
 {
@@ -58,29 +52,31 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
     }
 
     /**
-     * Enter description here ...
+     * Retrieve all dynamically added product ids for the given category id
      *
      * @param int $categoryId Category
      */
     public function getDynamicProductIdsByCategory($categoryId)
     {
         if (!isset($this->_dynamicProductdIdsByCategory[$categoryId])) {
-            $rc = $this->getReadConnection();
-            $select = $rc->select()
+            $read = $this->getReadConnection();
+            $select = $read->select()
                 ->from($this->_productCategoryTable, array('product_id'))
                 ->where('category_id = ?', $categoryId)
                 ->where('dynamic = ?', 1);
-            $this->_dynamicProductdIdsByCategory[$categoryId] = (array) $rc->fetchCol($select);
+
+            $this->_dynamicProductdIdsByCategory[$categoryId] = (array) $read->fetchCol($select);
         }
+
         return $this->_dynamicProductdIdsByCategory[$categoryId];
     }
 
     /**
      * Enter description here ...
      *
-     * @param unknown_type $object
-     * @param unknown_type $storeId
-     * @param unknown_type $categoryIds
+     * @param Varien_Object $object      Object to reindex
+     * @param null|int      $storeId     Store id for reindex
+     * @param array         $categoryIds Category Ids to reindex
      */
     public function rebuildIndex($object, $storeId = null, $categoryIds = null)
     {
@@ -88,12 +84,14 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
 
         foreach ($rules as $categoryId => $rule) {
             $ruleArray = @unserialize($rule);
+
             $ids = array();
             if (is_array($ruleArray) && count($ruleArray) > 1) {
                 $object->setData('conditions', $ruleArray);
                 $object->loadPost(array('conditions' => $ruleArray));
                 $ids = $object->getMatchingProductIds();
             }
+
             $this->_saveCategories($ids, $categoryId);
         }
     }
@@ -101,20 +99,23 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
     /**
      * Save product category relations
      *
-     * @param array $productIds
-     * @param int   $categoryId
-     * @return FireGento_DynamicCategory_Model_Mysql4_Rule
+     * @param  array $productIds Product Ids to link with the category
+     * @param  int   $categoryId Category Id
+     * @return FireGento_DynamicCategory_Model_Resource_Rule
      */
     protected function _saveCategories($productIds, $categoryId)
     {
-        $rc = $this->getReadConnection();
-        $select = $rc->select()
+        $read = $this->getReadConnection();
+        $write = $this->_getWriteAdapter();
+
+        // Fetch the current assigned products for the given category
+        $select = $read->select()
             ->from($this->_productCategoryTable)
             ->where('category_id = ?', $categoryId)
             ->order('dynamic asc');
 
         $oldProductIds = array();
-        foreach ($rc->fetchAll($select) as $category) {
+        foreach ($read->fetchAll($select) as $category) {
             if ($category['dynamic']) {
                 $oldProductIds[] = $category['product_id'];
             } elseif (
@@ -128,15 +129,16 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
         $insert = array_diff($productIds, $oldProductIds);
         $delete = array_diff($oldProductIds, $productIds);
 
-        $write = $this->_getWriteAdapter();
+        // Insert the new category-product relations
         if (!empty($insert)) {
             $data = array();
             foreach ($insert as $productId) {
                 if (empty($productId)) {
                     continue;
                 }
+
                 $data[] = array(
-                    'category_id' => (int)$categoryId,
+                    'category_id' => (int) $categoryId,
                     'product_id'  => $productId,
                     'position'    => 99,
                     'dynamic'     => 1
@@ -148,6 +150,7 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
             }
         }
 
+        // Delete the old category-product relations
         if (!empty($delete)) {
             $where = join(
                 ' AND ',
@@ -156,6 +159,7 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
                     $write->quoteInto('category_id = ?', $categoryId)
                 )
             );
+
             $write->delete($this->_productCategoryTable, $where);
         }
 
@@ -163,10 +167,11 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
     }
 
     /**
-     * Enter description here ...
+     * Fetch all rules for the given category ids and the given store id
      *
-     * @param unknown_type $categoryIds
-     * @param unknown_type $storeId
+     * @param  null|array $categoryIds Category Ids
+     * @param  null|int   $storeId     Store Id
+     * @return array Rules array
      */
     protected function _getRulesByCategoryIds($categoryIds = null, $storeId = null)
     {
@@ -174,8 +179,8 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
         $attribute = Mage::getModel('eav/entity_attribute')
             ->loadByCode('catalog_category', self::RULE_ATTRIBUTE_CODE);
 
-        $rc = $this->getReadConnection();
-        $select = $rc->select()
+        $read = $this->getReadConnection();
+        $select = $read->select()
             ->from($attribute->getBackendTable(), array('entity_id', 'value'))
             ->where('store_id = ?', $storeId === null ? 0 : $storeId)
             ->where('attribute_id = ?', $attribute->getId())
@@ -185,6 +190,6 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
             $select->where('entity_id IN(?)', $categoryIds);
         }
 
-        return $rc->fetchPairs($select);
+        return $read->fetchPairs($select);
     }
 }

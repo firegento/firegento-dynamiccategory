@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,29 +15,21 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
  */
 /**
- * Product Attribute Condition Class
+ * Product Combine Rules Condition Class
  *
- * @category  FireGento
- * @package   FireGento_DynamicCategory
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
+ * @category FireGento
+ * @package  FireGento_DynamicCategory
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine
     extends Mage_Rule_Model_Condition_Combine
 {
     /**
-     * Class constructor
-     *
-     * @return void
+     * Init the product combine conditions and set the custom type
      */
     public function __construct()
     {
@@ -49,7 +41,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine
      * Retrieve the product options for the select field.
      *
      * @see Mage_Rule_Model_Condition_Abstract::getNewChildSelectOptions()
-     * @return array Product Options
+     * @return array Conditions as array
      */
     public function getNewChildSelectOptions()
     {
@@ -58,7 +50,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine
 
         $pAttributes = array();
         $iAttributes = array();
-        foreach ($productAttributes as $code=>$label) {
+        foreach ($productAttributes as $code => $label) {
             if (strpos($code, 'quote_item_') === 0) {
                 $iAttributes[] = array(
                     'value' => 'dynamiccategory/rule_condition_product|'.$code,
@@ -86,6 +78,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine
                 ),
             )
         );
+
         return $conditions;
     }
 }
