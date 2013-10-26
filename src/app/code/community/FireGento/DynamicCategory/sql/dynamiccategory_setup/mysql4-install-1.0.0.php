@@ -32,7 +32,7 @@
  * @since     1.0.0
  */
 
-/* @var $installer Mage_Core_Model_Resource_Setup */
+/* @var $installer Mage_Catalog_Model_Resource_Setup */
 $installer = $this;
 $installer->startSetup();
 
@@ -43,25 +43,24 @@ $installer->run(
 );
 
 // Create category attribute
-$installer->addAttribute(
-    'catalog_category',
-    'dynamiccategory',
+$installer->addAttribute('catalog_category', 'dynamiccategory',
     array(
-        'type'              => 'text',
-        'backend'           => 'dynamiccategory/entity_attribute_backend_rule',
-        'input_renderer'    => '',
-        'frontend'          => '',
-        'label'             => '',
-        'input'             => '',
-        'class'             => '',
-        'source'            => '',
-        'global'            => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
-        'visible'           => false,
-        'required'          => false,
-        'user_defined'      => false,
-        'default'           => '',
-        'visible_on_front'  => false,
-        'unique'            => false,
+        'type' => 'text',
+        'backend' => 'dynamiccategory/entity_attribute_backend_rule',
+        'input_renderer' => '',
+        'frontend' => '',
+        'label' => '',
+        'input' => '',
+        'class' => '',
+        'source' => '',
+        'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
+        'visible' => false,
+        'required' => false,
+        'user_defined' => false,
+        'default' => '',
+        'visible_on_front' => false,
+        'unique' => false,
     )
 );
+
 $installer->endSetup();
