@@ -1,15 +1,14 @@
 FireGento_DynamicCategory
 =====================
-This extension enables you to dynamically add products to categories based on product attributes.
+Description
+-----------
+This extension enables you to dynamically add products to a specific category based on product attributes.
 
 Facts
 -----
-- version: 1.0.0
+- Version: 1.0.0
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
 
-Description
------------
-This extension enables you to dynamically add products to categories based on product attributes.
 
 Requirements
 ------------
@@ -22,17 +21,57 @@ Compatibility
 
 Installation Instructions
 -------------------------
-1. Install the extension via Magento Connect with the key shown above or copy all the files into your document root.
-2. Clear the cache, logout from the admin panel and then login again.
-3. You can now dynamically add products to categories based on attributes.
+
+### Via modman
+
+- Install [modman](https://github.com/colinmollenhour/modman)
+- Use the command from your Magento installation folder: `modman clone https://github.com/firegento/firegento-dynamiccategory`
+
+### Via composer
+- Install [composer](http://getcomposer.org/download/)
+- Install [Magento Composer](https://github.com/magento-hackathon/magento-composer-installer)
+- Create a composer.json into your project like the following sample:
+
+```json
+{
+    ...
+    "require": {
+        "firegento/dynamiccategory":"*"
+    },
+    "repositories": [
+	    {
+            "type": "composer",
+            "url": "http://packages.firegento.com"
+        }
+    ],
+    "extra":{
+        "magento-root-dir": "./"
+    }
+}
+
+```
+
+- Then from your `composer.json` folder: `php composer.phar install` or `composer install`
+
+### Manually
+- You can copy the files from the folders of this repository to the same folders of your installation
+
+
+### Installation in ALL CASES
+1. Clear the cache, logout from the admin panel and then login again.
+2. You can now dynamically add products to categories based on attributes.
 
 Usage
 -----
 
-The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" of categories in the backend.
-You can define rules for products to be included in the category. 
+The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" while reading or editing a category into the backend.
+You can define rules for products to be included in the category.
 
-If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration.
+![Dynamic Category Products](./doc/images/screenshot-tab-dynamic-products.png)
+
+If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration (See Catalog > Attributes > YOUR ATTRIBUTE > Edit it).
+
+![Attribute Edit](./doc/images/attribute-rule-promotion.png)
 
 
 
