@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Model_Resource_Rule" namespace="" name="FireGento_DynamicCategory_Model_Resource_Rule" abstract="false" final="false" start="28" end="195">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Resource" file="Rule.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Resource/Rule.php" size="6554" time="2013-10-26T15:41:09+02:00" unixtime="1382794869" sha1="5f0722c955e336f797cf68603db2bff91e1c3dab"/>
+  <docblock>
+    <description compact="Resource model for rule conditions."/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Core_Model_Resource_Db_Abstract" namespace="" name="Mage_Core_Model_Resource_Db_Abstract"/>
+  <constant name="RULE_ATTRIBUTE_CODE" value="'dynamiccategory'">
+    <docblock>
+      <description compact="Attribute code for dynamiccategory"/>
+    </docblock>
+  </constant>
+  <member name="_productCategoryTable" type="{unknown}" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var description="Product Category Table name" type="string"/>
+    </docblock>
+  </member>
+  <member name="_dynamicProductdIdsByCategory" type="array" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var description="Dynamic Products by Category ID" type="array"/>
+    </docblock>
+  </member>
+  <method name="_construct" start="48" end="52" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Inits the main table, the id field name and the product category table name"/>
+    </docblock>
+  </method>
+  <method name="getDynamicProductIdsByCategory" start="59" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve all dynamically added product ids for the given category id"/>
+      <param description="Category" type="int" variable="$categoryId"/>
+    </docblock>
+    <parameter name="categoryId" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="rebuildIndex" start="81" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Enter description here ..."/>
+      <param description="Object to reindex" type="object" variable="$object">
+        <type full="Varien_Object" namespace="" name="Varien_Object"/>
+      </param>
+      <param description="Store id for reindex" type="object" variable="$storeId">
+        <type full="null|int" namespace="" name="null|int"/>
+      </param>
+      <param description="Category Ids to reindex" type="array" variable="$categoryIds"/>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+    <parameter name="storeId" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="categoryIds" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="_saveCategories" start="106" end="167" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Save product category relations"/>
+      <param description="Product Ids to link with the category" type="array" variable="$productIds"/>
+      <param description="Category Id" type="int" variable="$categoryId"/>
+      <return type="object">
+        <type full="FireGento_DynamicCategory_Model_Resource_Rule" namespace="" name="FireGento_DynamicCategory_Model_Resource_Rule"/>
+      </return>
+    </docblock>
+    <parameter name="productIds" byreference="false" type="{unknown}"/>
+    <parameter name="categoryId" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_getRulesByCategoryIds" start="176" end="194" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Fetch all rules for the given category ids and the given store id"/>
+      <param description="Category Ids" type="object" variable="$categoryIds">
+        <type full="null|array" namespace="" name="null|array"/>
+      </param>
+      <param description="Store Id" type="object" variable="$storeId">
+        <type full="null|int" namespace="" name="null|int"/>
+      </param>
+      <return description="Rules array" type="array"/>
+    </docblock>
+    <parameter name="categoryIds" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="storeId" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <extender full="FireGento_DynamicCategory_Model_Mysql4_Rule" namespace="" name="FireGento_DynamicCategory_Model_Mysql4_Rule"/>
+</class>

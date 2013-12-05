@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,28 +15,20 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
  */
 /**
- * Rules for Conditions
+ * Model for rule conditions.
  *
- * @category  FireGento
- * @package   FireGento_DynamicCategory
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
+ * @category FireGento
+ * @package  FireGento_DynamicCategory
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
 {
     /**
-     * Enter description here ...
-     *
-     * @return void
+     * Init the resource model
      */
     protected function _construct()
     {
@@ -59,15 +51,15 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
      *
      * Examples:
      * (null, null) => Regenerate index for all stores
-     * (1, null)    => Regenerate index for store Id=1
-     * (1, 2)       => Regenerate index for product Id=2 and its store view Id=1
-     * (null, 2)    => Regenerate index for all store views of product Id=2
+     * (1, null)    => Regenerate index for store=1
+     * (1, 2)       => Regenerate index for category2 and its store=1
+     * (null, 2)    => Regenerate index for all stores of category=2
      *
-     * @param int $storeId   Store View Id
-     * @param int $productId Product Entity Id
+     * @param  int       $storeId     Store View ID to reindex
+     * @param  int|array $categoryIds Category IDs to reindex
      * @return FireGento_DynamicCategory_Model_Rule Self.
      */
-    public function rebuildIndex($storeId = null, $categoryIds = null, $productIds = null)
+    public function rebuildIndex($storeId = null, $categoryIds = null)
     {
         if ($categoryIds !== null && !is_array($categoryIds)) {
             $categoryIds = array($categoryIds);
@@ -80,10 +72,10 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
     }
 
     /**
-     * Enter description here ...
+     * Initialize the rule model data from the given array.
      *
-     * @param array $rule
-     * @return FireGento_DynamicCategory_Model_Rule
+     * @param  array $rule Rule data
+     * @return FireGento_DynamicCategory_Model_Rule Self.
      */
     public function loadPost(array $rule)
     {
@@ -91,17 +83,18 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
         if (isset($arr['conditions'])) {
             $this->getConditions()->setConditions(array())->loadArray($arr['conditions'][1]);
         }
+
         if (isset($arr['actions'])) {
             $this->getActions()->setActions(array())->loadArray($arr['actions'][1]);
         }
+
         return $this;
     }
 
     /**
      * Callback function for product matching
      *
-     * @param $args
-     * @return void
+     * @param array $args Arguments
      */
     public function callbackValidateProduct($args)
     {
@@ -115,11 +108,10 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
     /**
      * Get array of product ids which are matched by rule
      *
-     * @return array
+     * @return array Matching product IDs
      */
     public function getMatchingProductIds()
     {
-
         $this->_productIds = array();
         $this->setCollectedAttributes(array());
         $websiteIds = explode(',', $this->getWebsiteIds());
@@ -138,6 +130,7 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
                 )
             );
         }
+
         return $this->_productIds;
     }
 }

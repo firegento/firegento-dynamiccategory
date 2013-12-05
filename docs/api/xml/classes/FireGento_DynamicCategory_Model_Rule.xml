@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Model_Rule" namespace="" name="FireGento_DynamicCategory_Model_Rule" abstract="false" final="false" start="28" end="136">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model" file="Rule.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Rule.php" size="4454" time="2013-10-26T16:40:40+02:00" unixtime="1382798440" sha1="554f73246b13ec876926dfd188f7d57f87e456cf"/>
+  <docblock>
+    <description compact="Model for rule conditions."/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_CatalogRule_Model_Rule" namespace="" name="Mage_CatalogRule_Model_Rule"/>
+  <method name="_construct" start="33" end="36" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Init the resource model"/>
+    </docblock>
+  </method>
+  <method name="getConditionsInstance" start="44" end="47" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets an instance of the respective conditions model"/>
+      <see value="Mage_Rule_Model_Rule::getConditionsInstance()"/>
+      <return description="Condition Instance" type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule_Condition_Combine" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Combine"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="rebuildIndex" start="62" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Regenerate all Stores index">Examples:
+(null, null) =&gt; Regenerate index for all stores
+(1, null)    =&gt; Regenerate index for store=1
+(1, 2)       =&gt; Regenerate index for category2 and its store=1
+(null, 2)    =&gt; Regenerate index for all stores of category=2</description>
+      <param description="Store View ID to reindex" type="int" variable="$storeId"/>
+      <param description="Category IDs to reindex" type="object" variable="$categoryIds">
+        <type full="int|array" namespace="" name="int|array"/>
+      </param>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule" namespace="" name="FireGento_DynamicCategory_Model_Rule"/>
+      </return>
+    </docblock>
+    <parameter name="storeId" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="categoryIds" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="loadPost" start="80" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the rule model data from the given array."/>
+      <param description="Rule data" type="array" variable="$rule"/>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule" namespace="" name="FireGento_DynamicCategory_Model_Rule"/>
+      </return>
+    </docblock>
+    <parameter name="rule" byreference="false" type="array"/>
+  </method>
+  <method name="callbackValidateProduct" start="99" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Callback function for product matching"/>
+      <param description="Arguments" type="array" variable="$args"/>
+    </docblock>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMatchingProductIds" start="113" end="135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get array of product ids which are matched by rule"/>
+      <return description="Matching product IDs" type="array"/>
+    </docblock>
+  </method>
+</class>

@@ -1,0 +1,8 @@
+module:
+  version: 1.0.0
+  code_pool: community
+  depends:
+    - Mage_Adminhtml
+    - Mage_Index
+    - Mage_Rule
+    - Mage_CatalogRule

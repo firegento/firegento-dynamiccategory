@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,21 +15,15 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.1.0
  */
 /**
  * Condition block for category edit page
  *
- * @category  FireGento
- * @package   FireGento_DynamicCategory
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.1.0
+ * @category FireGento
+ * @package  FireGento_DynamicCategory
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
     extends Mage_Adminhtml_Block_Widget_Form
@@ -42,7 +36,7 @@ class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
     protected $_category;
 
     /**
-     * Retrieve the current categoy
+     * Retrieve the current selected category in the admin view.
      *
      * @return Mage_Catalog_Model_Category Category
      */
@@ -51,6 +45,7 @@ class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
         if (!$this->_category) {
             $this->_category = Mage::registry('category');
         }
+
         return $this->_category;
     }
 
@@ -63,36 +58,38 @@ class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
     {
         parent::_prepareLayout();
 
+        $data = array('conditions' => $this->getCategory()->getDynamiccategory());
+
+        /* @var $model FireGento_DynamicCategory_Model_Rule */
         $model = Mage::getSingleton('dynamiccategory/rule');
-        $data = array();
-        $data['conditions'] = $this->getCategory()->getDynamiccategory();
         $model->loadPost($data);
 
         $form = new Varien_Data_Form();
-
         $form->setHtmlIdPrefix('dynamiccategory_');
         $form->setDataObject($this->getCategory());
 
+        // New child url
+        $newChildUrl = $this->getUrl(
+            'dynamiccategory/dynamic/newConditionHtml/form/dynamiccategory_conditions_fieldset'
+        );
+
+        // Fieldset renderer
         $renderer = Mage::getBlockSingleton('adminhtml/widget_form_renderer_fieldset')
             ->setTemplate('dynamiccategory/fieldset.phtml')
-            ->setNewChildUrl(
-                $this->getUrl('dynamiccategory/dynamic/newConditionHtml/form/dynamiccategory_conditions_fieldset')
-            );
+            ->setNewChildUrl($newChildUrl);
 
+        // Add new fieldset
         $fieldset = $form->addFieldset(
             'conditions_fieldset',
             array('legend' => $this->__('Dynamic Category Product Relater'))
         )->setRenderer($renderer);
 
-        $fieldset->addField(
-            'conditions',
-            'text',
-            array(
+        // Add new field to the fieldset
+        $fieldset->addField('conditions', 'text', array(
                 'name' => 'conditions',
                 'label' => $this->__('Conditions'),
                 'title' => $this->__('Conditions'),
-            )
-        )->setRule($model)->setRenderer(Mage::getBlockSingleton('dynamiccategory/conditions'));
+        ))->setRule($model)->setRenderer(Mage::getBlockSingleton('dynamiccategory/conditions'));
 
         $this->setForm($form);
 

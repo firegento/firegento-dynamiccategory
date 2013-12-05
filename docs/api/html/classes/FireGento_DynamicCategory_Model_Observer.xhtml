@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "html" "">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>FireGento_DynamicCategory - FireGento_DynamicCategory_Model_Observer - API Documentation</title>
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+  <body>
+    <div class="wrapper clearfix">
+      <div class="topbar clearfix">
+        <h1>
+          <a class="brand" href="../index.xhtml">FireGento_DynamicCategory - API Documentation</a>
+        </h1>
+        <ul class="nav">
+          <li class="active">
+            <a href="../index.xhtml">Overview</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navigation">
+        <h3>Methods</h3>
+        <ul>
+          <li>
+            <a href="#_filterDates">_filterDates</a>
+          </li>
+          <li>
+            <a href="#adminhtmlBlockHtmlBefore">adminhtmlBlockHtmlBefore</a>
+          </li>
+          <li>
+            <a href="#adminhtmlCatalogCategoryTabs">adminhtmlCatalogCategoryTabs</a>
+          </li>
+          <li>
+            <a href="#catalogCategoryPrepareSave">catalogCategoryPrepareSave</a>
+          </li>
+          <li>
+            <a href="#decorateType">decorateType</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <h2><span style="font-size:60%">\</span>FireGento_DynamicCategory_Model_Observer</h2>
+        <div class="file-notice">
+          <p>Observer Model for adding the block to the category products view and observing the category save.</p>
+        </div>
+        <ul class="fileinfos">
+          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
+        </ul>
+        <h3>Methods</h3>
+        <ul class="varlist">
+          <li>
+            <a name="adminhtmlBlockHtmlBefore"/>
+            <h4><span class="label public">public</span>adminhtmlBlockHtmlBefore<span style="font-size:90%;">( <span class="param-type"><span title="\\Varien_Event_Observer">Varien_Event_Observer</span></span><strong> $observer</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Prepare the adminhtml category products view</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$observer</code> - Observer Instance</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="adminhtmlCatalogCategoryTabs"/>
+            <h4><span class="label public">public</span>adminhtmlCatalogCategoryTabs<span style="font-size:90%;">( <span class="param-type"><span title="\\Varien_Event_Observer">Varien_Event_Observer</span></span><strong> $observer</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Append a custom block to the category.product.grid block.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$observer</code> - Observer Instance</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="catalogCategoryPrepareSave"/>
+            <h4><span class="label public">public</span>catalogCategoryPrepareSave<span style="font-size:90%;">( <span class="param-type"><span title="\\Varien_Event_Observer">Varien_Event_Observer</span></span><strong> $observer</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Observe the category save.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$observer</code> - Observer Instance</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Self.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="decorateType"/>
+            <h4><span class="label public">public</span>decorateType<span style="font-size:90%;">( <span class="param-type">mixed</span><strong> $value</strong>, <span class="param-type"><span title="Varien_Object">Varien_Object</span></span><strong> $row</strong>, <span class="param-type"><span title="Varien_Object">Varien_Object</span></span><strong> $column</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Decorate Type column values</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$value</code> - Column value</li>
+                <li><code>$row</code> - Current Row</li>
+                <li><code>$column</code> - Current Column</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Decorated field</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="_filterDates"/>
+            <h4><span class="label protected">protected</span>_filterDates<span style="font-size:90%;">( <span class="param-type">array</span><strong> $array</strong>, <span class="param-type">array</span><strong> $dateFields</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Convert dates in array from localized to internal format</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$array</code> - Post data</li>
+                <li><code>$dateFields</code> - Date fields</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Filtered dates</li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
+      </div>
+    </div>
+  </body>
+</html>

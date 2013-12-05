@@ -1,0 +1,4 @@
+results:
+  name: Dynamic Categories
+  description: Rule based Relation Builder
+  indexer: FireGento_DynamicCategory_Model_Rule

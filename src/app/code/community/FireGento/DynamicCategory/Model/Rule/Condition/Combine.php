@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the FIREGENTO project.
+ * This file is part of a FireGento e.V. module.
  *
- * FireGento_DynamicCategory is free software; you can redistribute it and/or
+ * This FireGento e.V. module is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
@@ -15,35 +15,19 @@
  * @category  FireGento
  * @package   FireGento_DynamicCategory
  * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
  */
 /**
  * Combine Condition Class
  *
- * @category  FireGento
- * @package   FireGento_DynamicCategory
- * @author    FireGento Team <team@firegento.com>
- * @copyright 2012 FireGento Team (http://www.firegento.de). All rights served.
- * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
- * @version   1.0.0
- * @since     0.2.0
+ * @category FireGento
+ * @package  FireGento_DynamicCategory
+ * @author   FireGento Team <team@firegento.com>
  */
 class FireGento_DynamicCategory_Model_Rule_Condition_Combine
     extends Mage_CatalogRule_Model_Rule_Condition_Combine
 {
-    /**
-     * Class Constructor
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Returns the aggregator options
      *
@@ -58,6 +42,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
                 //'any' => Mage::helper('rule')->__('ANY'),
             )
         );
+
         return $this;
     }
 
@@ -75,6 +60,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
                 //0 => Mage::helper('rule')->__('FALSE'),
             )
         );
+
         return $this;
     }
 }

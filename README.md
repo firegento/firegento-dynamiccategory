@@ -1,7 +1,6 @@
 FireGento_DynamicCategory
-=====================
-Description
------------
+=========================
+
 This extension enables you to dynamically add products to a specific category based on product attributes.
 
 Facts
@@ -10,14 +9,31 @@ Facts
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
 
 
+The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" of categories in the backend.
+You can define rules for products to be included in the category.
+
+If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration.
+
+Description
+-----------
+
+The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" while reading or editing a category into the backend.
+You can define rules for products to be included in the category.
+
+![Dynamic Category Products](./docs/images/screenshot-tab-dynamic-products.png)
+
+If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration (See Catalog > Attributes > YOUR ATTRIBUTE > Edit it).
+
+![Attribute Edit](./docs/images/attribute-rule-promotion.png)
+
+
 Requirements
 ------------
-- PHP >= 5.2.0
-- Mage_Core
+- PHP >= 5.3.0
 
 Compatibility
 -------------
-- Magento >= 1.5
+- Magento >= 1.6
 
 Installation Instructions
 -------------------------
@@ -61,23 +77,20 @@ Installation Instructions
 1. Clear the cache, logout from the admin panel and then login again.
 2. You can now dynamically add products to categories based on attributes.
 
-Usage
------
+Uninstallation
+--------------
+1. Remove all extension files from your Magento installation
+2. Run the following sql script in your database:
 
-The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" while reading or editing a category into the backend.
-You can define rules for products to be included in the category.
-
-![Dynamic Category Products](./doc/images/screenshot-tab-dynamic-products.png)
-
-If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration (See Catalog > Attributes > YOUR ATTRIBUTE > Edit it).
-
-![Attribute Edit](./doc/images/attribute-rule-promotion.png)
-
+```sql
+DROP TABLE dynamiccategory_rule;
+DELETE FROM eav_attribute WHERE attribute_code = 'dynamiccategory';
+```
 
 
 Support
 -------
-If you have any issues with this extension, open an issue on [GitHub](https://github.com/firegento/firegento-dynamiccategory/issues).
+If you have any issues with this extension, open an issue on [GitHub](https://github.com/firegento/firegento-customer/issues).
 
 Contribution
 ------------
@@ -85,13 +98,14 @@ Any contribution is highly appreciated. The best way to contribute code is to op
 
 Developer
 ---------
-[http://firegento.com](http://firegento.com)  
-[@firegento](https://twitter.com/firegento)
+FireGento Team
+* Website: [http://firegento.com](http://firegento.com)
+* Twitter: [@firegento](https://twitter.com/firegento)
 
-Licence
+License
 -------
 [GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
 
 Copyright
 ---------
-(c) 2012 FireGento
+(c) 2012-2013 FireGento Team

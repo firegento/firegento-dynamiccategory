@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_DynamicCategory_Model_Rule_Condition_Product_Found" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Product_Found" abstract="false" final="false" start="28" end="80">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Rule/Condition/Product" file="Found.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-dynamiccategory/src/app/code/community/FireGento/DynamicCategory/Model/Rule/Condition/Product/Found.php" size="2495" time="2013-10-26T16:26:10+02:00" unixtime="1382797570" sha1="6f3dbf24dec7b0886cde9c42e1f441e2b7600d84"/>
+  <docblock>
+    <description compact="Product Found Rules Condition Class"/>
+    <category value="FireGento"/>
+    <package value="FireGento_DynamicCategory"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine"/>
+  <constructor name="__construct" start="34" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Init the product found conditions and set the custom type"/>
+    </docblock>
+  </constructor>
+  <method name="loadValueOptions" start="46" end="56" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the allowed value options for the select field."/>
+      <see value="Mage_Rule_Model_Condition_Combine::loadValueOptions()"/>
+      <return description="Self." type="object">
+        <type full="FireGento_DynamicCategory_Model_Rule_Condition_Product_Found" namespace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Product_Found"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="asHtml" start="65" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the html code for the condition field"/>
+      <see value="Mage_Rule_Model_Condition_Combine::asHtml()"/>
+      <return description="HTML" type="string"/>
+    </docblock>
+  </method>
+  <parent full="FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine" namepsace="" name="FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine">
+    <extends full="Mage_Rule_Model_Condition_Combine" namespace="" name="Mage_Rule_Model_Condition_Combine"/>
+    <constructor name="__construct" start="34" end="38" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Init the product combine conditions and set the custom type"/>
+      </docblock>
+    </constructor>
+    <method name="getNewChildSelectOptions" start="46" end="83" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the product options for the select field."/>
+        <see value="Mage_Rule_Model_Condition_Abstract::getNewChildSelectOptions()"/>
+        <return description="Conditions as array" type="array"/>
+      </docblock>
+    </method>
+  </parent>
+</class>
