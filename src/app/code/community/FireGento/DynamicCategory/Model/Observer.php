@@ -129,8 +129,6 @@ class FireGento_DynamicCategory_Model_Observer
         $request  = $observer->getEvent()->getRequest();
 
         if ($request->getPost('rule')) {
-            /* @var $model FireGento_DynamicCategory_Model_Rule */
-            $model = Mage::getModel('dynamiccategory/rule');
             $data = $request->getPost();
             $data = $this->_filterDates($data, array('from_date', 'to_date'));
 
