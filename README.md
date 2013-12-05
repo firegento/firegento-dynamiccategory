@@ -1,7 +1,9 @@
 FireGento_DynamicCategory
 =========================
 
-This extension enables you to dynamically add products to a specific category based on product attributes.
+DynamicCategory is a **free community module** for Magento which allows you to add automatically products to a category, thanks to a set of rules based on the product attribute.
+
+The interface to set the rules is very similar to the ono to create shopping cart rules. See the [**Usage**](#usage) Chapter below to see how to use it.
 
 Facts
 -----
@@ -13,18 +15,6 @@ The module adds a new section "Dynamic Category Product Relater" at the tab "Cat
 You can define rules for products to be included in the category.
 
 If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration.
-
-Description
------------
-
-The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" while reading or editing a category into the backend.
-You can define rules for products to be included in the category.
-
-![Dynamic Category Products](./docs/images/screenshot-tab-dynamic-products.png)
-
-If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration (See Catalog > Attributes > YOUR ATTRIBUTE > Edit it).
-
-![Attribute Edit](./docs/images/attribute-rule-promotion.png)
 
 
 Requirements
@@ -64,7 +54,6 @@ Installation Instructions
         "magento-root-dir": "./"
     }
 }
-
 ```
 
 - Then from your `composer.json` folder: `php composer.phar install` or `composer install`
@@ -86,6 +75,24 @@ Uninstallation
 DROP TABLE dynamiccategory_rule;
 DELETE FROM eav_attribute WHERE attribute_code = 'dynamiccategory';
 ```
+
+<a name="usage">
+Usage
+-----------
+
+The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" while reading or editing a category into the backend.
+You can define rules for products to be included in the category.
+
+![Dynamic Category Products](./docs/images/screenshot-tab-dynamic-products.png)
+
+To define a rule, click on the `+` button and add one or more attributes then fill which value(s) must be valid or not to make the condition TRUE. Then it will apply the product to the current category if conditions are ok. You can set if it must be applied when only one or all conditions are valid.
+
+When you finished to define the rules, save the current category.
+
+
+If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration (See Catalog > Attributes > YOUR ATTRIBUTE > Edit it).
+
+![Attribute Edit](./docs/images/attribute-rule-promotion.png)
 
 
 Support
