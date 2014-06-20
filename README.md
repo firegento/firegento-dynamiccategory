@@ -32,6 +32,7 @@ Installation Instructions
 
 - Install [modman](https://github.com/colinmollenhour/modman)
 - Use the command from your Magento installation folder: `modman clone https://github.com/firegento/firegento-dynamiccategory`
+- Please make sure that the setting "Allow Symlinks" in System Configuration under *Developer -> Template Settings* is set to "YES".
 
 ### Via composer
 - Install [composer](http://getcomposer.org/download/)
