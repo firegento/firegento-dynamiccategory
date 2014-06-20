@@ -7,7 +7,7 @@ The interface to set the rules is very similar to the ono to create shopping car
 
 Facts
 -----
-- Version: 1.0.0
+- Version: 1.0.1
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
 
 
