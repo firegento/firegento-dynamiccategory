@@ -59,4 +59,14 @@ class FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule
 
         return $this;
     }
+
+
+    public function afterSave($object) {
+        $attrCode = $this->getAttribute()->getAttributeCode();
+
+        //Always update the related products after save.
+        //if ($object->getData($attrCode) != serialize($object->getOrigData($attrCode))) {
+            $object->setIsChangedProductList(true);
+        //}
+    }
 }
