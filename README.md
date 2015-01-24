@@ -3,11 +3,11 @@ FireGento_DynamicCategory
 
 DynamicCategory is a **free community module** for Magento which allows you to add automatically products to a category, thanks to a set of rules based on the product attribute.
 
-The interface to set the rules is very similar to the ono to create shopping cart rules. See the [**Usage**](#usage) Chapter below to see how to use it.
+The interface to set the rules is very similar to the one to create shopping cart rules. See the [**Usage**](#usage) Chapter below to see how to use it.
 
 Facts
 -----
-- Version: 1.0.1
+- Version: 1.1.0
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
 
 

@@ -55,6 +55,11 @@
                 <dynamiccategory>
                     <model>dynamiccategory/indexer_rule</model>
                 </dynamiccategory>
+                <catalog_category_product>
+                    <depends>
+                        <dynamiccategory/>
+                    </depends>
+                </catalog_category_product>
             </indexer>
         </index>
         <resources>
