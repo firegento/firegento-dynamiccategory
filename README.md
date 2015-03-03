@@ -7,15 +7,13 @@ The interface to set the rules is very similar to the one to create shopping car
 
 Facts
 -----
-- Version: 1.1.0
+- Version: 1.2.0
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
-
 
 The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" of categories in the backend.
 You can define rules for products to be included in the category.
 
 If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration.
-
 
 Requirements
 ------------
