@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Observer Model for adding the block to the category products
  * view and observing the category save.
@@ -79,11 +80,11 @@ class FireGento_DynamicCategory_Model_Observer
             $block->addColumn(
                 'dynamic',
                 array(
-                    'header' => Mage::helper('catalog')->__('Type'),
-                    'width' => '80',
-                    'index' => 'dynamic',
-                    'sortable' => false,
-                    'filter' => false,
+                    'header'         => Mage::helper('catalog')->__('Type'),
+                    'width'          => '80',
+                    'index'          => 'dynamic',
+                    'sortable'       => false,
+                    'filter'         => false,
                     'frame_callback' => array($this, 'decorateType')
                 )
             );
@@ -113,7 +114,7 @@ class FireGento_DynamicCategory_Model_Observer
                 $value = $column->getGrid()->__('static');
             }
 
-            return '<span class="'.$class.'"><span>'.$value.'</span></span>';
+            return '<span class="' . $class . '"><span>' . $value . '</span></span>';
         }
     }
 
@@ -126,7 +127,7 @@ class FireGento_DynamicCategory_Model_Observer
     public function catalogCategoryPrepareSave(Varien_Event_Observer $observer)
     {
         $category = $observer->getEvent()->getCategory();
-        $request  = $observer->getEvent()->getRequest();
+        $request = $observer->getEvent()->getRequest();
 
         if ($request->getPost('rule')) {
             $data = $request->getPost();
@@ -169,9 +170,4 @@ class FireGento_DynamicCategory_Model_Observer
 
         return $array;
     }
-
-    public function updateCategories() {
-        Mage::getSingleton('index/indexer')->getProcessByCode('dynamiccategory')->reindexEverything();
-    }
-    
 }
