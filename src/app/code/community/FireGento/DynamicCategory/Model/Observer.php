@@ -169,4 +169,9 @@ class FireGento_DynamicCategory_Model_Observer
 
         return $array;
     }
+
+    public function updateCategories() {
+        Mage::getSingleton('index/indexer')->getProcessByCode('dynamiccategory')->reindexEverything();
+    }
+    
 }
