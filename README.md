@@ -3,19 +3,17 @@ FireGento_DynamicCategory
 
 DynamicCategory is a **free community module** for Magento which allows you to add automatically products to a category, thanks to a set of rules based on the product attribute.
 
-The interface to set the rules is very similar to the ono to create shopping cart rules. See the [**Usage**](#usage) Chapter below to see how to use it.
+The interface to set the rules is very similar to the one to create shopping cart rules. See the [**Usage**](#usage) Chapter below to see how to use it.
 
 Facts
 -----
-- Version: 1.0.1
+- Version: 1.2.0
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
-
 
 The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" of categories in the backend.
 You can define rules for products to be included in the category.
 
 If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration.
-
 
 Requirements
 ------------
