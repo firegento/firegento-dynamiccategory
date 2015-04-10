@@ -28,6 +28,30 @@
 class FireGento_DynamicCategory_Model_Rule_Condition_Combine
     extends Mage_CatalogRule_Model_Rule_Condition_Combine
 {
+    
+    /**
+     * Get inherited conditions selectors
+     *
+     * @return array
+     */
+    public function getNewChildSelectOptions()
+    {
+        $productCondition = Mage::getModel('dynamiccategory/rule_condition_product');
+        $productAttributes = $productCondition->loadAttributeOptions()->getAttributeOption();
+
+        $attributes = array();
+        foreach ($productAttributes as $code=>$label) {
+            $attributes[] = array('value'=>'catalogrule/rule_condition_product|'.$code, 'label'=>$label);
+        }
+
+        $conditions = array(
+            array('value'=>'', 'label'=>Mage::helper('rule')->__('Please choose a condition to add...')),
+            array('value'=>'catalogrule/rule_condition_combine', 'label'=>Mage::helper('catalogrule')->__('Conditions Combination')),
+            array('label'=>Mage::helper('catalogrule')->__('Product Attribute'), 'value'=>$attributes),
+        );
+        return $conditions;
+    }
+
     /**
      * Returns the aggregator options
      *
