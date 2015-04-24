@@ -81,13 +81,13 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     public function loadAttributeOptions()
     {
-        $productAttributes = Mage::getResourceSingleton('catalog/product')
-            ->loadAllAttributes()
-            ->getAttributesByCode();
+        $productAttributes = Mage::getResourceModel('catalog/product_attribute_collection');
 
         $attributes = array();
         foreach ($productAttributes as $attribute) {
-            if ($attribute->getData('is_visible')) {
+            /* @var $attribute Mage_Catalog_Model_Resource_Eav_Attribute */
+            if ($attribute->isAllowedForRuleCondition() && $attribute->getDataUsingMethod('is_used_for_promo_rules')
+            ) {
                 $attributes[$attribute->getAttributeCode()] = $attribute->getFrontendLabel();
             }
         }
