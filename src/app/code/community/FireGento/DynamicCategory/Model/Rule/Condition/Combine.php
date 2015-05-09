@@ -42,8 +42,13 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
 
         $attributes = array();
         foreach ($productAttributes as $code => $label) {
+            $class = 'catalogrule/rule_condition_product';
+            if ($code == 'type_id') {
+                $class = 'dynamiccategory/rule_condition_product';
+            }
+
             $attributes[] = array(
-                'value' => 'catalogrule/rule_condition_product|' . $code,
+                'value' => $class . '|' . $code,
                 'label' => $label
             );
         }

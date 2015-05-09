@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Product Condition Class
  *
@@ -72,6 +73,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
     {
         $attributes['attribute_set_id'] = Mage::helper('dynamiccategory')->__('Attribute Set');
         $attributes['category_ids'] = Mage::helper('dynamiccategory')->__('Category');
+        $attributes['type_id'] = Mage::helper('dynamiccategory')->__('Product Type');
     }
 
     /**
@@ -86,7 +88,8 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
         $attributes = array();
         foreach ($productAttributes as $attribute) {
             /* @var $attribute Mage_Catalog_Model_Resource_Eav_Attribute */
-            if ($attribute->isAllowedForRuleCondition() && $attribute->getDataUsingMethod('is_used_for_promo_rules')
+            if ($attribute->isAllowedForRuleCondition()
+                && $attribute->getDataUsingMethod('is_used_for_promo_rules')
             ) {
                 $attributes[$attribute->getAttributeCode()] = $attribute->getFrontendLabel();
             }
@@ -105,7 +108,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      * @param  mixed $option Current Option
      * @return string Value of an Option
      */
-    public function getValueOption($option=null)
+    public function getValueOption($option = null)
     {
         if (!$this->getData('value_option')) {
             if ($this->getAttribute() === 'attribute_set_id') {
@@ -116,6 +119,9 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
                     ->load()
                     ->toOptionHash();
 
+                $this->setData('value_option', $options);
+            } elseif ($this->getAttribute() == 'type_id') {
+                $options = Mage::getSingleton('catalog/product_type')->getOptionArray();
                 $this->setData('value_option', $options);
             } elseif (is_object($this->getAttributeObject()) && $this->getAttributeObject()->usesSource()) {
                 if ($this->getAttributeObject()->getFrontendInput() == 'multiselect') {
@@ -136,7 +142,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
             }
         }
 
-        return $this->getData('value_option'.(!is_null($option) ? '/'.$option : ''));
+        return $this->getData('value_option' . (!is_null($option) ? '/' . $option : ''));
     }
 
     /**
@@ -154,6 +160,9 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
                     ->setEntityTypeFilter($entityTypeId)
                     ->load()->toOptionArray();
 
+                $this->setData('value_select_options', $options);
+            } elseif ($this->getAttribute() == 'type_id') {
+                $options = Mage::getSingleton('catalog/product_type')->getOptions();
                 $this->setData('value_select_options', $options);
             } elseif (is_object($this->getAttributeObject()) && $this->getAttributeObject()->usesSource()) {
                 if ($this->getAttributeObject()->getFrontendInput() == 'multiselect') {
@@ -238,7 +247,8 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     public function getInputType()
     {
-        if ($this->getAttribute() === 'attribute_set_id') {
+        $selectAttributes = array('attribute_set_id', 'type_id');
+        if (in_array($this->getAttribute(), $selectAttributes)) {
             return 'select';
         }
 
@@ -271,7 +281,8 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     public function getValueElementType()
     {
-        if ($this->getAttribute() === 'attribute_set_id') {
+        $selectAttributes = array('attribute_set_id', 'type_id');
+        if (in_array($this->getAttribute(), $selectAttributes)) {
             return 'select';
         }
 
@@ -383,18 +394,20 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
 
         if ('category_ids' == $attrCode) {
             return $this->validateAttribute($object->getAvailableInCategories());
-        } elseif (! isset($this->_entityAttributeValues[$object->getId()])) {
+        } elseif (!isset($this->_entityAttributeValues[$object->getId()])) {
             $attr = $object->getResource()->getAttribute($attrCode);
 
-            if ($attr && $attr->getBackendType() == 'datetime' && ! is_int($this->getValue())) {
+            if ($attr && $attr->getBackendType() == 'datetime' && !is_int($this->getValue())) {
                 $this->setValue(strtotime($this->getValue()));
                 $value = strtotime($object->getData($attrCode));
+
                 return $this->validateAttribute($value);
             }
 
             if ($attr && $attr->getFrontendInput() == 'multiselect') {
                 $value = $object->getData($attrCode);
                 $value = strlen($value) ? explode(',', $value) : array();
+
                 return $this->validateAttribute($value);
             }
 
@@ -418,7 +431,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
                 $object->setData($attrCode, $oldAttrValue);
             }
 
-            return (bool) $result;
+            return (bool)$result;
         }
     }
 }
