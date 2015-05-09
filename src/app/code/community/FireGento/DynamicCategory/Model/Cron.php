@@ -34,9 +34,12 @@ class FireGento_DynamicCategory_Model_Cron
      */
     public function updateCategories()
     {
-        $indexer = Mage::getSingleton('index/indexer')->getProcessByCode('dynamiccategory');
-        if ($indexer) {
-            $indexer->reindexEverything();
+        /* @var $indexer Mage_Index_Model_Indexer */
+        $indexer = Mage::getSingleton('index/indexer');
+        /* @var $process Mage_Index_Model_Process */
+        $process = $indexer->getProcessByCode('dynamiccategory');
+        if ($process) {
+            $process->reindexEverything();
         }
     }
 }

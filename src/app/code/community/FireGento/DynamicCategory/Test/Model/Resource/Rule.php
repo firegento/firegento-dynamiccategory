@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * PHPUnit Test Class
  *
@@ -53,8 +54,8 @@ class FireGento_DynamicCategory_Test_Model_Resource_Rule extends EcomDev_PHPUnit
     }
 
     /**
-     * @loadFixture ~FireGento_DynamicCategory/data
-     * @loadFixture testGetDynamicProductIdsByCategory
+     * @loadFixture  ~FireGento_DynamicCategory/data
+     * @loadFixture  testGetDynamicProductIdsByCategory
      * @dataProvider dataProvider
      */
     public function testGetDynamicProductIdsByCategory($categoryId)
@@ -66,9 +67,9 @@ class FireGento_DynamicCategory_Test_Model_Resource_Rule extends EcomDev_PHPUnit
     }
 
     /**
-     * @loadFixture ~FireGento_DynamicCategory/data
+     * @loadFixture  ~FireGento_DynamicCategory/data
      * @dataProvider dataProvider
-     * @depends testGetDynamicProductIdsByCategory
+     * @depends      testGetDynamicProductIdsByCategory
      */
     public function testSaveCategories($productIds, $categoryId)
     {

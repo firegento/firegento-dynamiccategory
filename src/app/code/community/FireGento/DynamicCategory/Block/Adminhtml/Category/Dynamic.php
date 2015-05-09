@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Condition block for category edit page
  *
@@ -86,9 +87,9 @@ class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
 
         // Add new field to the fieldset
         $fieldset->addField('conditions', 'text', array(
-                'name' => 'conditions',
-                'label' => $this->__('Conditions'),
-                'title' => $this->__('Conditions'),
+            'name'  => 'conditions',
+            'label' => $this->__('Conditions'),
+            'title' => $this->__('Conditions'),
         ))->setRule($model)->setRenderer(Mage::getBlockSingleton('dynamiccategory/conditions'));
 
         $this->setForm($form);

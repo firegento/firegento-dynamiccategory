@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Resource model for rule conditions.
  *
@@ -65,7 +66,7 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
                 ->where('category_id = ?', $categoryId)
                 ->where('dynamic = ?', 1);
 
-            $this->_dynamicProductdIdsByCategory[$categoryId] = (array) $read->fetchCol($select);
+            $this->_dynamicProductdIdsByCategory[$categoryId] = (array)$read->fetchCol($select);
         }
 
         return $this->_dynamicProductdIdsByCategory[$categoryId];
@@ -138,7 +139,7 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
                 }
 
                 $data[] = array(
-                    'category_id' => (int) $categoryId,
+                    'category_id' => (int)$categoryId,
                     'product_id'  => $productId,
                     'position'    => 99,
                     'dynamic'     => 1
