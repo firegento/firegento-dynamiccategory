@@ -25,6 +25,8 @@
  * @category FireGento
  * @package  FireGento_DynamicCategory
  * @author   FireGento Team <team@firegento.com>
+ *
+ * @method string getAttribute()
  */
 class FireGento_DynamicCategory_Model_Rule_Condition_Product
     extends Mage_Rule_Model_Condition_Abstract
@@ -74,6 +76,8 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
         $attributes['attribute_set_id'] = Mage::helper('dynamiccategory')->__('Attribute Set');
         $attributes['category_ids'] = Mage::helper('dynamiccategory')->__('Category');
         $attributes['type_id'] = Mage::helper('dynamiccategory')->__('Product Type');
+        $attributes['created_at'] = Mage::helper('dynamiccategory')->__('Product Created At');
+        $attributes['updated_at'] = Mage::helper('dynamiccategory')->__('Product Updated At');
     }
 
     /**
@@ -252,6 +256,11 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
             return 'select';
         }
 
+        $dateAttributes = array('created_at', 'updated_at');
+        if (in_array($this->getAttribute(), $dateAttributes)) {
+            return 'date';
+        }
+
         if (!is_object($this->getAttributeObject())) {
             return 'string';
         }
@@ -284,6 +293,11 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
         $selectAttributes = array('attribute_set_id', 'type_id');
         if (in_array($this->getAttribute(), $selectAttributes)) {
             return 'select';
+        }
+
+        $dateAttributes = array('created_at', 'updated_at');
+        if (in_array($this->getAttribute(), $dateAttributes)) {
+            return 'date';
         }
 
         if (!is_object($this->getAttributeObject())) {
@@ -324,6 +338,11 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
             }
         }
 
+        $dateAttributes = array('created_at', 'updated_at');
+        if (in_array($this->getAttribute(), $dateAttributes)) {
+            $element->setImage(Mage::getDesign()->getSkinUrl('images/grid-cal.gif'));
+        }
+
         return $element;
     }
 
@@ -339,6 +358,8 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
         switch ($this->getAttribute()) {
             case 'sku':
             case 'category_ids':
+            case 'created_at':
+            case 'updated_at':
                 $return = true;
                 break;
         }

@@ -29,6 +29,12 @@
 class FireGento_DynamicCategory_Model_Rule_Condition_Combine
     extends Mage_CatalogRule_Model_Rule_Condition_Combine
 {
+    /**
+     * @var array
+     */
+    protected $_customFilterAttributes = array(
+        'type_id', 'created_at', 'updated_at'
+    );
 
     /**
      * Get inherited conditions selectors
@@ -42,8 +48,11 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
 
         $attributes = array();
         foreach ($productAttributes as $code => $label) {
+            // Use CatalogRule condition class by default
             $class = 'catalogrule/rule_condition_product';
-            if ($code == 'type_id') {
+
+            // Use DynamicCategory condition class for some attributes
+            if (in_array($code, $this->_customFilterAttributes)) {
                 $class = 'dynamiccategory/rule_condition_product';
             }
 
