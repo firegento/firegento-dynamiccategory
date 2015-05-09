@@ -7,6 +7,7 @@ The interface to set the rules is very similar to the one to create shopping car
 
 Facts
 -----
+
 - Version: 1.2.0
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
 
@@ -17,6 +18,7 @@ If a rule should be defined according to a specific attribute, that attribute ne
 
 Requirements
 ------------
+
 - PHP >= 5.3.0
 
 Compatibility
@@ -77,7 +79,9 @@ DELETE FROM eav_attribute WHERE attribute_code = 'dynamiccategory';
 
 <a name="usage">
 Usage
------------
+-----
+
+### How to use in category management
 
 The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" while reading or editing a category into the backend.
 You can define rules for products to be included in the category.
@@ -88,10 +92,21 @@ To define a rule, click on the `+` button and add one or more attributes then fi
 
 When you finished to define the rules, save the current category.
 
+### How to setup an attribute to be available for Dynamic Category
 
 If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration (See Catalog > Attributes > YOUR ATTRIBUTE > Edit it).
 
 ![Attribute Edit](./docs/images/attribute-rule-promotion.png)
+
+
+### Cronjob
+
+By default, there is a cronjob which runs every morning at 2 a.m. to reindex all dynamic categories.
+
+If you want to change this time, please go to *System > Configuration > Advanced > System > Dynamic Category* and 
+change the cron expression.
+
+![System Config Cron Expr](./docs/images/system-config-cron-expr.png)
 
 
 Support
