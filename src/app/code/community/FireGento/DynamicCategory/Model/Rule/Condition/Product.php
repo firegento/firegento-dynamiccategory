@@ -73,11 +73,11 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
      */
     protected function _addSpecialAttributes(array &$attributes)
     {
-        $attributes['attribute_set_id'] = Mage::helper('dynamiccategory')->__('Attribute Set');
-        $attributes['category_ids'] = Mage::helper('dynamiccategory')->__('Category');
-        $attributes['type_id'] = Mage::helper('dynamiccategory')->__('Product Type');
-        $attributes['created_at'] = Mage::helper('dynamiccategory')->__('Product Created At');
-        $attributes['updated_at'] = Mage::helper('dynamiccategory')->__('Product Updated At');
+        $attributes['attribute_set_id'] = $this->getHelper()->__('Attribute Set');
+        $attributes['category_ids'] = $this->getHelper()->__('Category');
+        $attributes['type_id'] = $this->getHelper()->__('Product Type');
+        $attributes['created_at'] = $this->getHelper()->__('Product Created At');
+        $attributes['updated_at'] = $this->getHelper()->__('Product Updated At');
     }
 
     /**
@@ -211,7 +211,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
     /**
      * Retrieve attribute element
      *
-     * @return Varien_Form_Element_Abstract Element
+     * @return Varien_Data_Form_Element_Abstract Element
      */
     public function getAttributeElement()
     {
@@ -454,5 +454,19 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product
 
             return (bool)$result;
         }
+    }
+
+    /**
+     * Retrieve the DynamicCategory helper
+     *
+     * @return FireGento_DynamicCategory_Helper_Data
+     */
+    public function getHelper()
+    {
+        if (!$this->hasData('dynamiccategory_helper')) {
+            $this->setData('dynamiccategory_helper', Mage::helper('dynamiccategory'));
+        }
+
+        return $this->getData('dynamiccategory_helper');
     }
 }
