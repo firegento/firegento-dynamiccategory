@@ -1,4 +1,4 @@
-w<?php
+<?php
 /**
  * This file is part of a FireGento e.V. module.
  *
@@ -18,6 +18,7 @@ w<?php
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Product Combine Rules Condition Class
  *
@@ -53,12 +54,12 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Combine
         foreach ($productAttributes as $code => $label) {
             if (strpos($code, 'quote_item_') === 0) {
                 $iAttributes[] = array(
-                    'value' => 'dynamiccategory/rule_condition_product|'.$code,
+                    'value' => 'dynamiccategory/rule_condition_product|' . $code,
                     'label' => $label
                 );
             } else {
                 $pAttributes[] = array(
-                    'value' => 'dynamiccategory/rule_condition_product|'.$code,
+                    'value' => 'dynamiccategory/rule_condition_product|' . $code,
                     'label' => $label
                 );
             }

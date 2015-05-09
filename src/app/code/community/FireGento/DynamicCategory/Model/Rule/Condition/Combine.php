@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Combine Condition Class
  *
@@ -28,7 +29,7 @@
 class FireGento_DynamicCategory_Model_Rule_Condition_Combine
     extends Mage_CatalogRule_Model_Rule_Condition_Combine
 {
-    
+
     /**
      * Get inherited conditions selectors
      *
@@ -40,15 +41,28 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Combine
         $productAttributes = $productCondition->loadAttributeOptions()->getAttributeOption();
 
         $attributes = array();
-        foreach ($productAttributes as $code=>$label) {
-            $attributes[] = array('value'=>'catalogrule/rule_condition_product|'.$code, 'label'=>$label);
+        foreach ($productAttributes as $code => $label) {
+            $attributes[] = array(
+                'value' => 'catalogrule/rule_condition_product|' . $code,
+                'label' => $label
+            );
         }
 
         $conditions = array(
-            array('value'=>'', 'label'=>Mage::helper('rule')->__('Please choose a condition to add...')),
-            array('value'=>'catalogrule/rule_condition_combine', 'label'=>Mage::helper('catalogrule')->__('Conditions Combination')),
-            array('label'=>Mage::helper('catalogrule')->__('Product Attribute'), 'value'=>$attributes),
+            array(
+                'value' => '',
+                'label' => Mage::helper('rule')->__('Please choose a condition to add...')
+            ),
+            array(
+                'value' => 'catalogrule/rule_condition_combine',
+                'label' => Mage::helper('catalogrule')->__('Conditions Combination')
+            ),
+            array(
+                'label' => Mage::helper('catalogrule')->__('Product Attribute'),
+                'value' => $attributes
+            ),
         );
+
         return $conditions;
     }
 

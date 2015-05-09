@@ -60,13 +60,16 @@ class FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule
         return $this;
     }
 
+    /**
+     * Always update the related products after save.
+     *
+     * @param  Varien_Object $object Object Model
+     * @return FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule Self.
+     */
+    public function afterSave($object)
+    {
+        $object->setIsChangedProductList(true);
 
-    public function afterSave($object) {
-        $attrCode = $this->getAttribute()->getAttributeCode();
-
-        //Always update the related products after save.
-        //if ($object->getData($attrCode) != serialize($object->getOrigData($attrCode))) {
-            $object->setIsChangedProductList(true);
-        //}
+        return parent::afterSave($object);
     }
 }
