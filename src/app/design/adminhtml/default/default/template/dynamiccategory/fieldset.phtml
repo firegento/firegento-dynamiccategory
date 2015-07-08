@@ -37,5 +37,5 @@ $_element = $this->getElement();
 </div>
 
 <script type="text/javascript">
-var <?php echo $_element->getHtmlId() ?> = new VarienRulesForm('<?php echo $_element->getHtmlId() ?>', '<?php echo $this->getNewChildUrl() ?>');
+window.<?php echo $_element->getHtmlId() ?> = new VarienRulesForm('<?php echo $_element->getHtmlId() ?>', '<?php echo $this->getNewChildUrl() ?>');
 </script>
