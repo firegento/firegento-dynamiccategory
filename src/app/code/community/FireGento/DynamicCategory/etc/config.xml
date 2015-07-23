@@ -75,7 +75,7 @@
         <jobs>
             <dynamiccategorycron>
                 <schedule><cron_expr>* 2 * * *</cron_expr></schedule>
-                <run><model>dynamiccategorycron/cron::updateCategories</model></run>
+                <run><model>dynamiccategory/cron::updateCategories</model></run>
             </dynamiccategorycron>
         </jobs>
     </crontab>
