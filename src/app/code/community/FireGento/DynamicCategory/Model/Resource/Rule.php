@@ -73,9 +73,9 @@ class FireGento_DynamicCategory_Model_Resource_Rule extends Mage_Core_Model_Reso
     }
 
     /**
-     * Enter description here ...
+     * Updates category-product relation, called during reindexing
      *
-     * @param Varien_Object $object      Object to reindex
+     * @param FireGento_DynamicCategory_Model_Rule $object Rule to reindex
      * @param null|int      $storeId     Store id for reindex
      * @param array         $categoryIds Category Ids to reindex
      */
