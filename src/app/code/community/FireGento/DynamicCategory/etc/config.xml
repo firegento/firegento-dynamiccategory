@@ -71,23 +71,15 @@
             </dynamiccategory_setup>
         </resources>
     </global>
-    <crontab>
-        <jobs>
-            <dynamiccategorycron>
-                <schedule><cron_expr>* 2 * * *</cron_expr></schedule>
-                <run><model>dynamiccategorycron/cron::updateCategories</model></run>
-            </dynamiccategorycron>
-        </jobs>
-    </crontab>
     <admin>
         <routers>
-            <dynamiccategory>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>FireGento_DynamicCategory</module>
-                    <frontName>dynamiccategory</frontName>
+                    <modules>
+                        <dynamiccategory before="Mage_Adminhtml">FireGento_DynamicCategory_Adminhtml</dynamiccategory>
+                    </modules>
                 </args>
-            </dynamiccategory>
+            </adminhtml>
         </routers>
     </admin>
     <adminhtml>
@@ -127,6 +119,25 @@
             </modules>
         </translate>
     </adminhtml>
+    <crontab>
+        <jobs>
+            <dynamiccategorycron>
+                <schedule>
+                    <config_path>system/dynamiccategory/cron_expr</config_path>
+                </schedule>
+                <run>
+                    <model>dynamiccategory/cron::updateCategories</model>
+                </run>
+            </dynamiccategorycron>
+        </jobs>
+    </crontab>
+    <default>
+        <system>
+            <dynamiccategory>
+                <cron_expr>* 2 * * *</cron_expr>
+            </dynamiccategory>
+        </system>
+    </default>
     <phpunit>
         <suite>
             <modules>

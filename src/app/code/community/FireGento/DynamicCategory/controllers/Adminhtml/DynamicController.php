@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Controller for AJAX requests.
  *
@@ -25,7 +26,7 @@
  * @package  FireGento_DynamicCategory
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_DynamicCategory_DynamicController
+class FireGento_DynamicCategory_Adminhtml_DynamicController
     extends Mage_Adminhtml_Controller_Action
 {
     /**

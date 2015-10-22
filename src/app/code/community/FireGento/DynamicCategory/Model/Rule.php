@@ -18,8 +18,12 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
- * Model for rule conditions.
+ * Model for rule conditions. Used as an indexer model
+ * @see FireGento_DynamicCategory_Model_Indexer_Rule::getIndexer()
+ *
+ * @method FireGento_DynamicCategory_Model_Resource_Rule getResource()
  *
  * @category FireGento
  * @package  FireGento_DynamicCategory
@@ -117,7 +121,8 @@ class FireGento_DynamicCategory_Model_Rule extends Mage_CatalogRule_Model_Rule
         $websiteIds = explode(',', $this->getWebsiteIds());
 
         if ($websiteIds) {
-            $productCollection = clone Mage::getResourceModel('catalog/product_collection');
+            /* @var $productCollection Mage_Catalog_Model_Resource_Product_Collection */
+            $productCollection = Mage::getResourceModel('catalog/product_collection');
             $productCollection->addWebsiteFilter($websiteIds);
 
             $this->getConditions()->collectValidatedAttributes($productCollection);

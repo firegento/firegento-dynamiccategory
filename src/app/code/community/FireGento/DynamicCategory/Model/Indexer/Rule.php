@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Indexer model for the dynamic category rules
  *
@@ -34,7 +35,7 @@ class FireGento_DynamicCategory_Model_Indexer_Rule
      * @var array Index Entities
      */
     protected $_matchedEntities = array(
-        Mage_Catalog_Model_Product::ENTITY => array(
+        Mage_Catalog_Model_Product::ENTITY  => array(
             Mage_Index_Model_Event::TYPE_SAVE,
             Mage_Index_Model_Event::TYPE_MASS_ACTION
         ),
@@ -136,7 +137,7 @@ class FireGento_DynamicCategory_Model_Indexer_Rule
                 /* @var $actionObject Varien_Object */
                 $actionObject = $event->getDataObject();
 
-                $reindexData  = array();
+                $reindexData = array();
                 $rebuildIndex = false;
 
                 // check changed websites

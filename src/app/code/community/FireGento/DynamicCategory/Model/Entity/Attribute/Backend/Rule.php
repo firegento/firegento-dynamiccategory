@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Rule Backend Model for the attribute
  *
@@ -60,13 +61,16 @@ class FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule
         return $this;
     }
 
+    /**
+     * Always update the related products after save.
+     *
+     * @param  Varien_Object $object Object Model
+     * @return FireGento_DynamicCategory_Model_Entity_Attribute_Backend_Rule Self.
+     */
+    public function afterSave($object)
+    {
+        $object->setIsChangedProductList(true);
 
-    public function afterSave($object) {
-        $attrCode = $this->getAttribute()->getAttributeCode();
-
-        //Always update the related products after save.
-        //if ($object->getData($attrCode) != serialize($object->getOrigData($attrCode))) {
-            $object->setIsChangedProductList(true);
-        //}
+        return parent::afterSave($object);
     }
 }

@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Combine Condition Class
  *
@@ -28,6 +29,57 @@
 class FireGento_DynamicCategory_Model_Rule_Condition_Combine
     extends Mage_CatalogRule_Model_Rule_Condition_Combine
 {
+    /**
+     * @var array
+     */
+    protected $_customFilterAttributes = array(
+        'type_id', 'created_at', 'updated_at'
+    );
+
+    /**
+     * Get inherited conditions selectors
+     *
+     * @return array
+     */
+    public function getNewChildSelectOptions()
+    {
+        $productCondition = Mage::getModel('dynamiccategory/rule_condition_product');
+        $productAttributes = $productCondition->loadAttributeOptions()->getAttributeOption();
+
+        $attributes = array();
+        foreach ($productAttributes as $code => $label) {
+            // Use CatalogRule condition class by default
+            $class = 'catalogrule/rule_condition_product';
+
+            // Use DynamicCategory condition class for some attributes
+            if (in_array($code, $this->_customFilterAttributes)) {
+                $class = 'dynamiccategory/rule_condition_product';
+            }
+
+            $attributes[] = array(
+                'value' => $class . '|' . $code,
+                'label' => $label
+            );
+        }
+
+        $conditions = array(
+            array(
+                'value' => '',
+                'label' => Mage::helper('rule')->__('Please choose a condition to add...')
+            ),
+            array(
+                'value' => 'catalogrule/rule_condition_combine',
+                'label' => Mage::helper('catalogrule')->__('Conditions Combination')
+            ),
+            array(
+                'label' => Mage::helper('catalogrule')->__('Product Attribute'),
+                'value' => $attributes
+            ),
+        );
+
+        return $conditions;
+    }
+
     /**
      * Returns the aggregator options
      *

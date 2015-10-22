@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Product Found Rules Condition Class
  *
@@ -72,7 +73,7 @@ class FireGento_DynamicCategory_Model_Rule_Condition_Product_Found
         );
 
         if ($this->getId() != '1') {
-            $html.= $this->getRemoveLinkHtml();
+            $html .= $this->getRemoveLinkHtml();
         }
 
         return $html;
