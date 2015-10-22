@@ -73,13 +73,13 @@
     </global>
     <admin>
         <routers>
-            <dynamiccategory>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>FireGento_DynamicCategory</module>
-                    <frontName>dynamiccategory</frontName>
+                    <modules>
+                        <dynamiccategory before="Mage_Adminhtml">FireGento_DynamicCategory_Adminhtml</dynamiccategory>
+                    </modules>
                 </args>
-            </dynamiccategory>
+            </adminhtml>
         </routers>
     </admin>
     <adminhtml>

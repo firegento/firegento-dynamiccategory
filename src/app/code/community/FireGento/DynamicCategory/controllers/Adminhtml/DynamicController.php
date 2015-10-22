@@ -26,7 +26,7 @@
  * @package  FireGento_DynamicCategory
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_DynamicCategory_DynamicController
+class FireGento_DynamicCategory_Adminhtml_DynamicController
     extends Mage_Adminhtml_Controller_Action
 {
     /**

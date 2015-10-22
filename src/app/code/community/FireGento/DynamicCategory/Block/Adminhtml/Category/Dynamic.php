@@ -71,7 +71,7 @@ class FireGento_DynamicCategory_Block_Adminhtml_Category_Dynamic
 
         // New child url
         $newChildUrl = $this->getUrl(
-            'dynamiccategory/dynamic/newConditionHtml/form/dynamiccategory_conditions_fieldset'
+            'adminhtml/dynamic/newConditionHtml/form/dynamiccategory_conditions_fieldset'
         );
 
         // Fieldset renderer
