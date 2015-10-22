@@ -8,7 +8,7 @@ The interface to set the rules is very similar to the one to create shopping car
 Facts
 -----
 
-- Version: 1.2.0
+- Version: 1.2.1
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
 
 The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" of categories in the backend.
