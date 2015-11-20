@@ -8,7 +8,7 @@ The interface to set the rules is very similar to the one to create shopping car
 Facts
 -----
 
-- Version: 1.2.1
+- Version: 1.2.2
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
 
 The module adds a new section "Dynamic Category Product Relater" at the tab "Category Products" of categories in the backend.
@@ -58,6 +58,12 @@ Installation Instructions
 ```
 
 - Then from your `composer.json` folder: `php composer.phar install` or `composer install`
+
+### Via modgit
+
+- Install [modgit](https://github.com/jreinke/modgit)
+- Use the command from your Magento installation folder: `modgit add -i src/app/:app/ -b develop Firegento_DynamicCategory https://github.com/firegento/firegento-dynamiccategory`
+- Please make sure that the setting "Allow Symlinks" in System Configuration under *Developer -> Template Settings* is set to "YES".
 
 ### Manually
 - You can copy the files from the folders of this repository to the same folders of your installation
@@ -129,4 +135,4 @@ License
 
 Copyright
 ---------
-(c) 2012-2013 FireGento Team
+(c) 2012-2015 FireGento Team
