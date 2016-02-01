@@ -59,4 +59,12 @@ class FireGento_DynamicCategory_Adminhtml_DynamicController
 
         $this->getResponse()->setBody($html);
     }
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return true;
+    }
 }
