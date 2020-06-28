@@ -1,6 +1,6 @@
 FireGento_DynamicCategory
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 =========================
 
@@ -153,6 +153,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.flagbit.de/"><img src="https://avatars2.githubusercontent.com/u/449424?v=4" width="100px;" alt=""/><br /><sub><b>Jörg Weller</b></sub></a><br /><a href="https://github.com/firegento/firegento-dynamiccategory/commits?author=hackwell" title="Code">💻</a></td>
     <td align="center"><a href="https://www.diglin.com/"><img src="https://avatars2.githubusercontent.com/u/1337461?v=4" width="100px;" alt=""/><br /><sub><b>Sylvain Rayé</b></sub></a><br /><a href="https://github.com/firegento/firegento-dynamiccategory/commits?author=sylvainraye" title="Code">💻</a></td>
     <td align="center"><a href="https://www.reachdigital.nl/"><img src="https://avatars2.githubusercontent.com/u/1244416?v=4" width="100px;" alt=""/><br /><sub><b>Paul Hachmang</b></sub></a><br /><a href="https://github.com/firegento/firegento-dynamiccategory/commits?author=paales" title="Code">💻</a></td>
+    <td align="center"><a href="http://vinaikopp.com/"><img src="https://avatars0.githubusercontent.com/u/72463?v=4" width="100px;" alt=""/><br /><sub><b>Vinai Kopp</b></sub></a><br /><a href="https://github.com/firegento/firegento-dynamiccategory/commits?author=Vinai" title="Code">💻</a></td>
   </tr>
 </table>
 
