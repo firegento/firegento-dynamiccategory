@@ -166,4 +166,4 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## Copyright
 
-(c) 2012-2015 FireGento Team
+(c) 2012-2020 FireGento Team
