@@ -1,15 +1,13 @@
-FireGento_DynamicCategory
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-=========================
+# FireGento_DynamicCategory
 
 DynamicCategory is a **free community module** for Magento which allows you to add automatically products to a category, thanks to a set of rules based on the product attribute.
 
 The interface to set the rules is very similar to the one to create shopping cart rules. See the [**Usage**](#usage) Chapter below to see how to use it.
 
-Facts
------
+## Facts
 
 - Version: 1.2.2
 - [extension on GitHub](https://github.com/firegento/firegento-dynamiccategory)
@@ -19,17 +17,15 @@ You can define rules for products to be included in the category.
 
 If a rule should be defined according to a specific attribute, that attribute needs to be enabled for "Use for Promo Rule Conditions" in its attribute configuration.
 
-Requirements
-------------
+## Requirements
 
 - PHP >= 5.3.0
 
-Compatibility
--------------
+## Compatibility
+
 - Magento >= 1.6
 
-Installation Instructions
--------------------------
+## Installation Instructions
 
 ### Via modman
 
@@ -76,8 +72,8 @@ Installation Instructions
 1. Clear the cache, logout from the admin panel and then login again.
 2. You can now dynamically add products to categories based on attributes.
 
-Uninstallation
---------------
+## Uninstallation
+
 1. Remove all extension files from your Magento installation
 2. Run the following sql script in your database:
 
@@ -118,27 +114,20 @@ change the cron expression.
 ![System Config Cron Expr](./docs/images/system-config-cron-expr.png)
 
 
-Support
--------
+## Support
+
 If you have any issues with this extension, open an issue on [GitHub](https://github.com/firegento/firegento-customer/issues).
 
-Contribution
-------------
-Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
+## Developer
 
-Developer
----------
 FireGento Team
 * Website: [http://firegento.com](http://firegento.com)
 * Twitter: [@firegento](https://twitter.com/firegento)
 
-License
--------
-[GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
+## Contribution
 
-Copyright
----------
-(c) 2012-2015 FireGento Team
+Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
+
 
 ## Contributors ✨
 
@@ -170,3 +159,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## License
+
+[GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
+
+## Copyright
+
+(c) 2012-2015 FireGento Team
